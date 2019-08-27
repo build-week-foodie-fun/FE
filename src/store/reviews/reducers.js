@@ -5,6 +5,9 @@ import {
   DELETE_REVIEW_START,
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAILURE,
+  EDIT_REVIEW_START,
+  EDIT_REVIEW_SUCCESS, 
+  EDIT_REVIEW_FAIL,
 } from "./types";
 
 const initialState = {
@@ -53,6 +56,25 @@ const reducers = (state = initialState, { type, payload }) => {
         error: payload.data.error,
         isLoading: false,
       };
+    case EDIT_REVIEW_START:
+      return {
+        ...state, 
+        error: "",
+        isLoading: true,
+      };
+    case EDIT_REVIEW_SUCCESS:
+      return {
+        ...state, 
+        error: "",
+        isLoading: false,
+        reviews: payload
+      };
+    case EDIT_REVIEW_FAIL:
+      return {
+        ...state,
+        error: parload.data.error,
+        isLoading: false,
+      }
     default:
       return state;
   }
