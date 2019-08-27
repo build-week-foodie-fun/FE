@@ -52,7 +52,6 @@ const NavBar = props => {
                     </Typography>
                     <LinkButton component={RouterLink} to="/">Dashboard</LinkButton>
                     <LinkButton component={RouterLink} to="/">Login</LinkButton>
-
                 </Toolbar>
             </AppBar>
         </div>

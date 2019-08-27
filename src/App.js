@@ -10,7 +10,6 @@ import NavBar from "./components/NavBar";
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Container from "@material-ui/core/Container";
-import {red} from "@material-ui/core/colors/index";
 
 const useStyles = makeStyles(theme => ({
     root: {
