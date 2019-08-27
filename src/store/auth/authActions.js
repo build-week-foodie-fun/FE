@@ -7,7 +7,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
 export const login = (credentials) => {
     return dispatch => {
         dispatch({type: LOGIN_START});
-        axios.post("/auth/login", {data: credentials} )
+        axios.post("/auth/login", credentials)
             .then(res => {
                 dispatch({type: LOGIN_SUCCESS, payload: res.data});
                 // set token to local storage (review console logs for correct token path)
