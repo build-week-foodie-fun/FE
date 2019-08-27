@@ -14,7 +14,7 @@ export const deleteReview = (id) => {
     return dispatch => {
         dispatch({type: DELETE_REVIEW_START});
         axiosWithAuth()
-            .delete(`reviews/${id}`)
+            .delete(`/reviews/${id}`)
             .then(res => {
                 console.log(res.data);
                 dispatch({type: DELETE_REVIEW_SUCCESS, payload: res.data});
