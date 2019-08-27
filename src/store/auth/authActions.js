@@ -21,11 +21,9 @@ export const login = (credentials, history) => {
     }
 }
 
-export const logout = (history) => {
+export const logout = () => {
     return dispatch => {
         dispatch({type: LOGOUT });
         localStorage.removeItem('token')
-        // route to login screen
-        history.push("/login")
     }
 }
