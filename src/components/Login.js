@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
+import { login } from "../store/auth/authActions";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
@@ -55,17 +56,23 @@ const FormikLoginForm = withFormik({
       password: Yup.string().min(6).required("Required"),
   }),
 
-  handleSubmit(values, { setStatus }) {
-      axios
-          .post('#', values)
-          .then(res => {
-              console.log(res)
-              setStatus(res);
-          })
-          .catch(err => console.log(err.response));
+  handleSubmit(values, { resetForm, props }) {
+    console.log(values)
+    console.log(props)
+    props.login(values, props.history);
+    resetForm();
+
+      // axios
+      //     .post('#', values)
+      //     .then(res => {
+      //         console.log(res)
+      //         setStatus(res);
+      //     })
+      //     .catch(err => console.log(err.response));
   }
 
 })(Login)
 
+export default connect(null, { login })(FormikLoginForm)
 
-export default FormikLoginForm;
+// export default FormikLoginForm;
