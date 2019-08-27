@@ -8,7 +8,8 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-
+import {connect} from "react-redux";
+import {logout} from "../store/auth/authActions";
 
 
 const useStyles = makeStyles(theme => ({
@@ -50,11 +51,19 @@ const NavBar = props => {
                     <Typography variant="h6" className={classes.title}>
                         Foodie Fun
                     </Typography>
-                    <LinkButton component={RouterLink} to="/">Dashboard</LinkButton>
-                    <LinkButton component={RouterLink} to="/">Login</LinkButton>
+                    {!props.isAuth && <LinkButton component={RouterLink} to="/login">Login</LinkButton>}
+                    {!props.isAuth && <LinkButton component={RouterLink} to="/signup">Sign up</LinkButton>}
+                    {props.isAuth && <LinkButton component={RouterLink} onClick={() => props.logout()}>Logout</LinkButton>}
+
                 </Toolbar>
             </AppBar>
         </div>
     );
 };
-export default NavBar;
+
+const mapPropsToState = state => {
+    return {
+        isAuth: state.isAuth,
+    }
+};
+export default connect(mapPropsToState, {logout})(NavBar);
