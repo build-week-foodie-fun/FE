@@ -64,9 +64,8 @@ const FormikSignUpForm = withFormik({
   validationSchema: Yup.object().shape({
       email: Yup.string().email().required("Please enter your email."),
       password: Yup.string().min(6).required("Please enter at least 6 letters"),
-      confirmPassword: Yup.string().required().test("passwords match", "Passwords must match", function(value) {
-          return this.parent.password ===value;
-      })
+      confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Passwords must match")
+      .required('Password confirm is required')
   }),
 
   handleSubmit(values, { setStatus }) {
