@@ -1,5 +1,6 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 
-import * as reviews from "./reviews/reducers";
+import reviews from "./reviews/reducers";
+import auth from "./auth/reducers";
 
-export default combineReducers({ reviews });
+export default combineReducers({reviews, auth});
