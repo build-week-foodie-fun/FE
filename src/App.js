@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-import ReviewForm from "./components/ReviewForm.js";
+//import ReviewForm from "./components/ReviewForm.js";
 
 //Components
 import NavBar from "./components/NavBar";
@@ -51,7 +51,7 @@ const App = () => {
           <NavBar />
           <Container maxWidth="md" className={classes.root}>
             <h1>App</h1>
-            <ReviewForm />
+
             <Switch>
               <Route path="/login" component={FormikLoginForm} />
               <Route path="/signup" component={FormikSignUpForm} />
