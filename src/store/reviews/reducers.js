@@ -49,7 +49,7 @@ const reducers = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 error: "",
-                reviews: [...state.reviews, newArr],
+                reviews:  newArr,
                 isLoading: false
             };
         case DELETE_REVIEW_FAILURE:
