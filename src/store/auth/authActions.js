@@ -41,7 +41,7 @@ export const register = user => dispatch => {
   dispatch({ type: REGISTER_START });
 
   axios
-    .post("/auth/register", user)
+    .post("https://buildweek-foodie1.herokuapp.com/auth/register", user)
     .then(res => {
       dispatch({ type: REGISTER_SUCCESS });
     })
