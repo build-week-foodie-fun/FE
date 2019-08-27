@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
 
 //login action
@@ -7,7 +8,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
 export const login = (credentials, history) => {
     return dispatch => {
         dispatch({type: LOGIN_START});
-        axios.post("/auth/login", credentials)
+        axios.post("https://buildweek-foodie1.herokuapp.com/auth/login", credentials)
             .then(res => {
                 dispatch({type: LOGIN_SUCCESS, payload: res.data});
                 // set token to local storage (review console logs for correct token path)
