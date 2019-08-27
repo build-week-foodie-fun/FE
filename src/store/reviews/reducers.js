@@ -11,11 +11,10 @@ import {
 } from "./types";
 
 const initialState = {
-    reviews: [],
-    error: "",
-    isLoading: false,
+  reviews: [],
+  error: "",
+  isLoading: false,
 };
-
 
 const reducers = (state = initialState, {type, payload}) => {
     switch (type) {
@@ -61,6 +60,5 @@ const reducers = (state = initialState, {type, payload}) => {
         default:
             return state;
     }
-};
 
 export default reducers;
