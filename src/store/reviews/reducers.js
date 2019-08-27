@@ -72,7 +72,7 @@ const reducers = (state = initialState, { type, payload }) => {
     case EDIT_REVIEW_FAIL:
       return {
         ...state,
-        error: parload.data.error,
+        error: payload.data.error,
         isLoading: false,
       }
     default:

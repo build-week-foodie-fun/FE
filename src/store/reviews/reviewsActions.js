@@ -66,7 +66,7 @@ export const updateReview = (id, history, review) => {
         history.push('/profile');
       })
       .catch(err => {
-        dispatch({ type: EDIT_REVIEW_FAIL, payload: err.resonse});
+        dispatch({ type: EDIT_REVIEW_FAIL, payload: err.response});
       })
   }
 }
