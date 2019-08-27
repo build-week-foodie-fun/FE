@@ -27,6 +27,7 @@ export const addReview = (history, review) => dispatch => {
 };
 
 
+
 //Delete review
 
 export const deleteReview = (id) => {
@@ -40,7 +41,7 @@ export const deleteReview = (id) => {
                 console.log(res.data);
                 dispatch({
                     type: DELETE_REVIEW_SUCCESS,
-                    payload: res.data
+                    payload: id
                 });
             })
             .catch(err => dispatch({

@@ -1,8 +1,8 @@
 import {
 
-  ADD_REVIEW_START,
-  ADD_REVIEW_SUCCESS,
-  ADD_REVIEW_FAILURE,
+    ADD_REVIEW_START,
+    ADD_REVIEW_SUCCESS,
+    ADD_REVIEW_FAILURE,
 
     DELETE_REVIEW_START,
     DELETE_REVIEW_SUCCESS,
@@ -19,25 +19,25 @@ const initialState = {
 
 const reducers = (state = initialState, {type, payload}) => {
     switch (type) {
-          case ADD_REVIEW_START:
-      return {
-        ...state,
-        error: "",
-        isLoading: true,
-      };
-    case ADD_REVIEW_SUCCESS:
-      return {
-        ...state,
-        reviews: [...state.reviews, payload],
-        error: "",
-        isLoading: false,
-      };
-    case ADD_REVIEW_FAILURE:
-      return {
-        ...state,
-        error: payload,
-        isLoading: false,
-      };
+        case ADD_REVIEW_START:
+            return {
+                ...state,
+                error: "",
+                isLoading: true,
+            };
+        case ADD_REVIEW_SUCCESS:
+            return {
+                ...state,
+                reviews: [...state.reviews, payload],
+                error: "",
+                isLoading: false,
+            };
+        case ADD_REVIEW_FAILURE:
+            return {
+                ...state,
+                error: payload,
+                isLoading: false,
+            };
         case DELETE_REVIEW_START:
             return {
                 ...state,
@@ -45,10 +45,11 @@ const reducers = (state = initialState, {type, payload}) => {
                 isLoading: true
             };
         case DELETE_REVIEW_SUCCESS:
+            const newArr = state.reviews.filter(review => review.id !== payload);
             return {
                 ...state,
                 error: "",
-                reviews: payload,
+                reviews: [...state.reviews, newArr],
                 isLoading: false
             };
         case DELETE_REVIEW_FAILURE:
