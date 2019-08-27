@@ -14,6 +14,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Container from "@material-ui/core/Container";
 
 import "./App.css";
+import Redirect from "react-router-dom/es/Redirect";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,24 +44,24 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
-  const classes = useStyles();
-  return (
-    <>
-      <MuiThemeProvider theme={theme}>
-        <Router>
-          <NavBar />
-          <Container maxWidth="md" className={classes.root}>
-            <h1>App</h1>
-
-            <Switch>
-              <Route path="/login" component={FormikLoginForm} />
-              <Route path="/signup" component={FormikSignUpForm} />
-            </Switch>
-          </Container>
-        </Router>
-      </MuiThemeProvider>
-    </>
-  );
+    const classes = useStyles();
+    return (
+        <>
+            <MuiThemeProvider theme={theme}>
+                <Router>
+                    <NavBar/>
+                    <Container maxWidth="md" className={classes.root}>
+                        <h1>App</h1>
+                        <Switch>
+                            <Route path="/login" component={FormikLoginForm} />
+                            <Route path="/signup" component={FormikSignUpForm} />
+                            <Redirect from="/" to="/login" />
+                        </Switch>
+                    </Container>
+                </Router>
+            </MuiThemeProvider>
+        </>
+    );
 };
 
 export default App;

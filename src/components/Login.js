@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
+import { login } from "../store/auth/authActions";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
@@ -21,11 +22,11 @@ const Login = ({ errors, touched, values, status }) => {
       <h1>Foodie Fun</h1>
       
       <Form>
-        <label>Email
-          <Field type="text" name="email" placeholder="food@foodiefun.com" />
+        <label>Username
+          <Field type="text" name="username" placeholder="foodiefun" />
         </label>
-        {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
+        {touched.username && errors.username && (
+          <p className="error">{errors.username}</p>
         )}
 
         <label>Password
@@ -43,29 +44,35 @@ const Login = ({ errors, touched, values, status }) => {
 }
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ email, password  }) {
+  mapPropsToValues({ username, password  }) {
     return {
-        email: email || "",
+        username: username || "",
         password: password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
-      email: Yup.string().email().required("Required"),
-      password: Yup.string().min(6).required("Required"),
+      username: Yup.string().required("Required"),
+      password: Yup.string().min(1).required("Required"),
   }),
 
-  handleSubmit(values, { setStatus }) {
-      axios
-          .post('#', values)
-          .then(res => {
-              console.log(res)
-              setStatus(res);
-          })
-          .catch(err => console.log(err.response));
+  handleSubmit(values, { resetForm, props }) {
+    console.log(values)
+    console.log(props)
+    props.login(values, props.history);
+    resetForm();
+
+      // axios
+      //     .post('#', values)
+      //     .then(res => {
+      //         console.log(res)
+      //         setStatus(res);
+      //     })
+      //     .catch(err => console.log(err.response));
   }
 
 })(Login)
 
+export default connect(null, { login })(FormikLoginForm)
 
-export default FormikLoginForm;
+// export default FormikLoginForm;
