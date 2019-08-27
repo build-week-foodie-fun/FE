@@ -13,6 +13,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Container from "@material-ui/core/Container";
 
 import "./App.css";
+import Redirect from "react-router-dom/es/Redirect";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,6 +54,7 @@ const App = () => {
                         <Switch>
                             <Route path="/login" component={FormikLoginForm} />
                             <Route path="/signup" component={FormikSignUpForm} />
+                            <Redirect from="/" to="/login" />
                         </Switch>
                     </Container>
                 </Router>
