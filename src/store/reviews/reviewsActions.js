@@ -7,6 +7,9 @@ import {
     DELETE_REVIEW_START,
     DELETE_REVIEW_SUCCESS,
     DELETE_REVIEW_FAILURE,
+    GET_REVIEWS_START,
+    GET_REVIEWS_SUCCESS,
+    GET_REVIEWS_FAILURE,
 } from "./types";
 
 //Add review
@@ -35,7 +38,7 @@ export const deleteReview = id => {
             type: DELETE_REVIEW_START,
         });
         axiosWithAuth()
-            .delete(`/reviews/${id}`)
+            .delete(`/api/${id}`)
             .then(res => {
                 console.log(res.data);
                 dispatch({
@@ -45,6 +48,27 @@ export const deleteReview = id => {
             })
             .catch(err => dispatch({
                 type: DELETE_REVIEW_FAILURE,
+                payload: err.response
+            }));
+    }
+};
+
+//Get All reviews
+
+export const getReviews = () => {
+    return dispatch => {
+        dispatch({type: GET_REVIEWS_START});
+        axiosWithAuth()
+            .get('/auth/api')
+            .then(res => {
+                console.log("get reviews", res.data);
+                dispatch({
+                    type: GET_REVIEWS_SUCCESS,
+                    payload: res.data
+                });
+            })
+            .catch(err => dispatch({
+                type: GET_REVIEWS_FAILURE,
                 payload: err.response
             }));
     }
