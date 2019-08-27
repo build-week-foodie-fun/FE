@@ -26,6 +26,7 @@ export const addReview = (history, review) => dispatch => {
     });
 };
 
+
 //Delete review
 
 export const deleteReview = id => {
@@ -34,19 +35,17 @@ export const deleteReview = id => {
       type: DELETE_REVIEW_START,
     });
     axiosWithAuth()
-      .delete(`/reviews/${id}`)
-      .then(res => {
-        console.log(res.data);
-        dispatch({
-          type: DELETE_REVIEW_SUCCESS,
-          payload: res.data,
-        });
-      })
-      .catch(err =>
-        dispatch({
-          type: DELETE_REVIEW_FAILURE,
-          payload: err.response,
-        }),
-      );
-  };
+         .delete(`/reviews/${id}`)
+         .then(res => {
+             console.log(res.data);
+             dispatch({
+                 type: DELETE_REVIEW_SUCCESS,
+                 payload: id
+             });
+          })
+          .catch(err => dispatch({
+               type: DELETE_REVIEW_FAILURE,
+               payload: err.response
+          }));
+ }
 };
