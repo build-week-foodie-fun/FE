@@ -29,7 +29,11 @@ export default function ReviewForm() {
           </label>
           <label className="food_rating" html for="rating">
             Rating
-            <Field type="number" min="1" max="5" name="food_rating" />
+            <Field type="text" name="food_rating" />
+          </label>
+          <label className="wait_time" html for="wait-time">
+            Wait Time
+            <Field type="text" name="wait_time" />
           </label>
           <Field
             type="text"
