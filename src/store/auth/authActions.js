@@ -4,7 +4,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
 
 //login action
 
-export const login = (credentials) => {
+export const login = (credentials, history) => {
     return dispatch => {
         dispatch({type: LOGIN_START});
         axios.post("/auth/login", credentials)
@@ -21,7 +21,7 @@ export const login = (credentials) => {
     }
 }
 
-export const logout = () => {
+export const logout = (history) => {
     return dispatch => {
         dispatch({type: LOGOUT });
         localStorage.removeItem('token')
