@@ -1,4 +1,12 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "./types";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE,
+} from "./types";
 
 const initialState = {
   error: "",
@@ -7,34 +15,52 @@ const initialState = {
 };
 
 const reducers = (state = initialState, action) => {
-  console.log('Auth Action', action)
+  console.log("Auth Action", action);
   switch (action.type) {
     case LOGIN_START:
       return {
-        ...state, 
+        ...state,
         error: "",
         isLoading: true,
-      }
+      };
     case LOGIN_SUCCESS:
       return {
-        ...state, 
+        ...state,
         error: "",
         isLoading: false,
         isAuth: true,
-      }
+      };
     case LOGIN_FAIL:
       return {
         ...state,
-        error: action.payload, 
+        error: action.payload,
         isLoading: false,
-      }
+      };
     case LOGOUT:
       return {
         ...state,
-        error: "", 
+        error: "",
         isLoading: false,
         isAuth: false,
-      }
+      };
+    case REGISTER_START:
+      return {
+        ...state,
+        errors: "",
+        isLoading: true,
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        errors: "",
+        isLoading: false,
+      };
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        errors: action.payload,
+        isLoading: false,
+      };
     default:
       return state;
   }
