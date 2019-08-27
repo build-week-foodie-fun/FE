@@ -37,13 +37,14 @@ export const logout = () => {
   };
 };
 
-export const register = user => dispatch => {
+export const register = (user, history) => dispatch => {
   dispatch({ type: REGISTER_START });
 
   axios
     .post("https://buildweek-foodie1.herokuapp.com/auth/register", user)
     .then(res => {
       dispatch({ type: REGISTER_SUCCESS });
+      history.push("/login");
     })
     .catch(err => {
       dispatch({ type: REGISTER_FAILURE, payload: err.response });
