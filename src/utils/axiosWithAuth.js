@@ -7,6 +7,8 @@ export const axiosWithAuth = () => {
     baseURL: "https://buildweek-foodie1.herokuapp.com",
     headers: {
       Authorization: token,
+      // Remove when live
+      AccessControlAllowOrigin: "http://localhost:3000",
     },
   });
 };
