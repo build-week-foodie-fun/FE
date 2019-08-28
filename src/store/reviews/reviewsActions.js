@@ -8,8 +8,8 @@ import {
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAILURE,
   GRAB_REVIEW,
-  EDIT_REVIEW_START, 
-  EDIT_REVIEW_SUCCESS, 
+  EDIT_REVIEW_START,
+  EDIT_REVIEW_SUCCESS,
   EDIT_REVIEW_FAIL,
   GET_REVIEWS_START,
   GET_REVIEWS_SUCCESS,
@@ -58,28 +58,26 @@ export const deleteReview = id => {
   };
 };
 
-
 // Edit Review Axios Request
 
-export const grabReview = (history, review) => {
-  dispatch({ type: GRAB_REVIEW,  payload: review})
+export const grabReview = (history, review) => dispatch => {
+  dispatch({ type: GRAB_REVIEW, payload: review });
   history.push("/reviewForm");
 };
 
-
 export const editReview = (id, history, review) => {
   return dispatch => {
-    dispatch({ type: EDIT_REVIEW_START});
+    dispatch({ type: EDIT_REVIEW_START });
     axiosWithAuth()
-      .put(`/reviews/${id}`, review )
+      .put(`/reviews/${id}`, review)
       .then(res => {
-        dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data});
-        history.push('/profile');
+        dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data });
+        history.push("/profile");
       })
       .catch(err => {
-        dispatch({ type: EDIT_REVIEW_FAIL, payload: err.response});
-      })
-  }
+        dispatch({ type: EDIT_REVIEW_FAIL, payload: err.response });
+      });
+  };
 };
 
 //Get All reviews
