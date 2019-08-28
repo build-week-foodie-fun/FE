@@ -5,6 +5,7 @@ import {
   DELETE_REVIEW_START,
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAILURE,
+  GRAB_REVIEW,
   EDIT_REVIEW_START,
   EDIT_REVIEW_SUCCESS, 
   EDIT_REVIEW_FAIL,
@@ -57,6 +58,13 @@ const reducers = (state = initialState, { type, payload }) => {
         error: payload.data.error,
         isLoading: false,
       };
+    case GRAB_REVIEW:
+      return {
+        ...state, 
+        error: "",
+        isLoading: false, 
+        activeReview: state.reviews.filter(review => review.id === payload.id)
+      }
     case EDIT_REVIEW_START:
       return {
         ...state, 
@@ -68,7 +76,7 @@ const reducers = (state = initialState, { type, payload }) => {
         ...state, 
         error: "",
         isLoading: false,
-        activeReview: state.reviews.filter(review => review.id === payload.id),
+        activeReview: [],
       };
     case EDIT_REVIEW_FAIL:
       return {

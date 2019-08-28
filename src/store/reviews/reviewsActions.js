@@ -7,6 +7,7 @@ import {
   DELETE_REVIEW_START,
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAILURE,
+  GRAB_REVIEW,
   EDIT_REVIEW_START, 
   EDIT_REVIEW_SUCCESS, 
   EDIT_REVIEW_FAIL,
@@ -56,7 +57,13 @@ export const deleteReview = id => {
 
 // Edit Review Axios Request
 
-export const updateReview = (id, history, review) => {
+export const grabReview = (history, review) => {
+  dispatch({ type: GRAB_REVIEW,  payload: review})
+  history.push("/reviewForm");
+}
+
+
+export const editReview = (id, history, review) => {
   return dispatch => {
     dispatch({ type: EDIT_REVIEW_START});
     axiosWithAuth()
