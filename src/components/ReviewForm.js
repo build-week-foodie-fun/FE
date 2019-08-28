@@ -2,11 +2,13 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { addReview } from "../store/reviews/reviewsActions";
+import { addReview, getReviews } from "../store/reviews/reviewsActions";
 
 function ReviewForm({ touched, errors, ...props }) {
+  console.log(props.reviews);
   return (
     <div className="review-form">
+      <button onClick={() => props.getReviews()}>Get List</button>
       <Form style={{ display: "flex", flexDirection: "column" }}>
         <label className="restaurant_name">
           Restaurant
@@ -124,5 +126,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addReview },
+  { addReview, getReviews },
 )(FormikReviewForm);
