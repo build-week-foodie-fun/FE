@@ -3,8 +3,10 @@ import Add from "@material-ui/icons/Add";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
+import {connect} from "react-redux";
+import ReviewList from "./ReviewList";
 
-export default function Profile(props) {
+function Profile(props) {
   const [userPicture, setUserPicture] = [];
   const [userName, setUserName] = [];
   useEffect(() => {
@@ -34,6 +36,16 @@ export default function Profile(props) {
         <FilterListIcon />
       </div>
       <div className="reviewList"></div>
+        <ReviewList/>
     </div>
+
   );
 }
+// const mapPropsToState = state => {
+//     return {
+//         username: state.username,
+//     }
+// };
+//
+// export default connect(mapPropsToState, {})(Profile);
+export default Profile;
