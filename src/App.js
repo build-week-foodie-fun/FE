@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Switch, BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from "axios";
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-//import ReviewForm from "./components/ReviewForm.js";
 
 //Components
 import NavBar from "./components/NavBar";
 import FormikLoginForm from "./components/Login";
-
 import FormikSignUpForm from "./components/SignUpForm";
 import Profile from "./components/Profile";
 import ReviewForm from "./components/ReviewForm";
 import ReviewList from "./components/ReviewList";
 import SingleReviewDetail from "./components/SingleReviewDetail";
-//import Profile from "./components/Profile";
 
 //Material-ui
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
