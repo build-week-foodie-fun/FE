@@ -6,3 +6,11 @@
   color: maroon;
   font-size: 0.8rem;
 }
+
+.user-profile {
+  max-width: 880px;
+}
+
+h2 {
+  font-size: 12px;
+}
