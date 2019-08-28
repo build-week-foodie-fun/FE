@@ -43,7 +43,7 @@ function Profile(props) {
 }
 const mapPropsToState = state => {
     return {
-        username: state.auth.user,
+        username: state.reviews.user,
     }
 };
 
