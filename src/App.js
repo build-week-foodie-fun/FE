@@ -69,7 +69,7 @@ const App = () => {
           <NavBar />
           <Container maxWidth="md" className={classes.root}>
             <h1>App</h1>
-            <Profile />
+
             <Switch>
               {/* {public routes} */}
               <Route path="/login" component={FormikLoginForm} />
