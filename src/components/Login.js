@@ -5,6 +5,30 @@ import { login } from "../store/auth/authActions";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
+import styled from "styled-components";
+
+const HeadImg = styled.img`
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  object-fit: cover;
+`;
+
+const LogoImg = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+`;
+
+const LoginTitle = styled.h1`
+  color: #d80000;
+  text-align: center;
+`;
+
+const BtnDiv = styled.div`
+  text-align: center;
+`;
+
 const Login = ({ errors, touched, values, status }) => {
   const [users, setUsers] = useState([]);
     console.log(touched)
@@ -15,30 +39,33 @@ const Login = ({ errors, touched, values, status }) => {
     }, [status])
 
   return(
-    <div>
-      <a href="#">
-        <img className="logo" src={require("../img/Foodie_Icon.png")} alt="Foodie Fun logo" />
-      </a>
-      <h1>Foodie Fun</h1>
-      
-      <Form>
-        <label>Username
-          <Field type="text" name="username" placeholder="foodiefun" />
-        </label>
-        {touched.username && errors.username && (
-          <p className="error">{errors.username}</p>
-        )}
+    <div className="container">
+      <HeadImg src={require("../img/pizza.jpg")} alt="pizza" />
+      <div className="loginForm">
+        <a href="https://build-week-foodie-fun.github.io/UI/">
+          <LogoImg src={require("../img/Foodie_Icon.png")} alt="Foodie Fun logo" />
+        </a>
+        <LoginTitle>Foodie Login</LoginTitle>
+        
+        <Form>
+          <label>Username
+            <Field type="text" name="username" placeholder="foodiefun" />
+          </label>
+          {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
+          )}
 
-        <label>Password
-          <Field type="password" name="password" placeholder="Password" />
-        </label>
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
+          <label>Password
+            <Field type="password" name="password" placeholder="Password" />
+          </label>
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
 
-        <button type="submit">Login</button>
-      </Form>
-      <h4>Don't have an account yet? <Link to="/signup">Sign Up</Link> here. </h4>            
+          <BtnDiv><button type="submit">Login</button></BtnDiv>
+        </Form>
+        <h3>Don't have an account yet? <Link to="/signup">Sign Up</Link> here. </h3> 
+      </div>           
     </div>
     )
 }
