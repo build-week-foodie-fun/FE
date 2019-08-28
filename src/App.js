@@ -76,7 +76,7 @@ const App = () => {
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
                 exact
-                path="/profile/reviewForm"
+                path="/profile/reviewform"
                 component={ReviewForm}
               />
               <PrivateRoute

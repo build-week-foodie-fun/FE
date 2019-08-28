@@ -54,8 +54,9 @@ const NavBar = props => {
                     </Typography>
                     {!props.isAuth && <LinkButton component={RouterLink} to="/login">Login</LinkButton>}
                     {!props.isAuth && <LinkButton component={RouterLink} to="/signup">Sign up</LinkButton>}
+                    {props.isAuth && <LinkButton component={RouterLink} to="/profile">Profile</LinkButton>}
+                    {props.isAuth && <LinkButton component={RouterLink} to="/profile/reviewForm">Create Review</LinkButton>}
                     {props.isAuth && <LinkButton component={RouterLink} onClick={() => props.logout()}>Logout</LinkButton>}
-
                 </Toolbar>
             </AppBar>
         </div>
@@ -64,7 +65,7 @@ const NavBar = props => {
 
 const mapPropsToState = state => {
     return {
-        isAuth: state.isAuth,
+        isAuth: state.auth.isAuth,
     }
 };
 export default connect(mapPropsToState, {logout})(NavBar);
