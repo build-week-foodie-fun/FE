@@ -26,7 +26,7 @@ import "./App.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 50,
+    // paddingTop: 50,
   },
 }));
 

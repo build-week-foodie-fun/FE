@@ -4,46 +4,69 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
 
+import styled from "styled-components";
+
+const HeadImg = styled.img`
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  object-fit: cover;
+`;
+
+const LogoImg = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+`;
+
+const LoginTitle = styled.h1`
+  color: #d80000;
+  text-align: center;
+`;
+
+const BtnDiv = styled.div`
+  text-align: center;
+`;
+
 const SignUpForm = ({ errors, touched }) => {
   return (
-    <div>
-      <a href="#">
-        <img
-          className="logo"
-          src={require("../img/Foodie_Icon.png")}
-          alt="Foodie Fun logo"
-        />
-      </a>
-      <h1>Foodie Fun</h1>
+    <div className="container">
+      <HeadImg src={require("../img/phoneAndFood.jpg")} alt="phone and food" />
+      <div className="loginForm">
+        <a href="https://build-week-foodie-fun.github.io/UI/">
+          <LogoImg src={require("../img/Foodie_Icon.png")} alt="Foodie Fun logo" />
+        </a>
+        <LoginTitle>Foodie Sign Up</LoginTitle>
 
-      <Form>
-        <label>
-          Username
-          <Field type="text" name="username" placeholder="FoodieFun" />
-        </label>
+        <Form>
+          <label>
+            Username
+            <Field type="text" name="username" placeholder="FoodieFun" />
+          </label>
 
-        <label>
-          Password
-          <Field type="password" name="password" placeholder="Password" />
-        </label>
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
+          <label>
+            Password
+            <Field type="password" name="password" placeholder="Password" />
+          </label>
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
 
-        <label>
-          Confirm Password
-          <Field
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-          />
-        </label>
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
+          <label>
+            Confirm Password
+            <Field
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+            />
+          </label>
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
 
-        <button type="submit">Submit</button>
-      </Form>
+          <BtnDiv><button type="submit">Submit</button></BtnDiv>
+        </Form>
+      </div>
     </div>
   );
 };
