@@ -12,6 +12,7 @@ const initialState = {
   error: "",
   isLoading: false,
   isAuth: false,
+  user: "",
 };
 
 const reducers = (state = initialState, action) => {
@@ -29,6 +30,7 @@ const reducers = (state = initialState, action) => {
         error: "",
         isLoading: false,
         isAuth: true,
+        user: action.payload.message,
       };
     case LOGIN_FAIL:
       return {

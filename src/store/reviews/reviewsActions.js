@@ -88,7 +88,7 @@ export const getReviews = () => {
     axiosWithAuth()
       .get("/auth/api")
       .then(res => {
-        // console.log("get reviews", res.data.data);
+        // console.log("get reviews", res.data);
         dispatch({
           type: GET_REVIEWS_SUCCESS,
           payload: res.data.data,
