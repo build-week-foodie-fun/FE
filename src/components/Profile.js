@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Add from "@material-ui/icons/Add";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import IconButton from "@material-ui/core/IconButton";
-import axios from "axios";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { getReviews } from "../store/reviews/reviewsActions";
 import ReviewList from "./ReviewList";
 
 function Profile(props) {
-  const [userPicture, setUserPicture] = [];
-  const [userName, setUserName] = [];
   useEffect(() => {
-    axios
-      .get("https://buildweek-foodie1.herokuapp.com/auth/api/users/id")
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    props.getReviews();
   }, []);
 
   return (
@@ -35,16 +30,19 @@ function Profile(props) {
       <div className="viewBar">
         <FilterListIcon />
       </div>
-      <div className="reviewList"></div>
-        <ReviewList/>
+      {/* <div className="reviewList"></div> */}
+      <ReviewList />
     </div>
-
   );
 }
+
 const mapPropsToState = state => {
-    return {
-        username: state.reviews.user,
-    }
+  return {
+    username: state.reviews.user,
+  };
 };
 
-export default connect(mapPropsToState, {})(Profile);
+export default connect(
+  mapPropsToState,
+  { getReviews },
+)(Profile);
