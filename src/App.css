@@ -3,6 +3,14 @@
   font-size: 0.8rem;
 }
 
+.user-profile {
+  max-width: 880px;
+}
+
+h2 {
+  font-size: 12px;
+}
+
 .container {
   max-width: 880px;
   margin: 0 auto;

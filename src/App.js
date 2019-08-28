@@ -14,7 +14,6 @@ import FormikLoginForm from "./components/Login";
 import FormikSignUpForm from "./components/SignUpForm";
 import Profile from "./components/Profile";
 import ReviewForm from "./components/ReviewForm";
-import ReviewList from "./components/ReviewList";
 import SingleReviewDetail from "./components/SingleReviewDetail";
 
 //Material-ui
@@ -72,6 +71,7 @@ const App = () => {
               {/* {public routes} */}
               <Route path="/login" component={FormikLoginForm} />
               <Route path="/signup" component={FormikSignUpForm} />
+
               {/* {private routes} */}
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
@@ -84,6 +84,7 @@ const App = () => {
                 path="/profile/review/:id"
                 component={SingleReviewDetail}
               />
+
               {/* {default} */}
               <Redirect from="/" to="/login" />
             </Switch>
