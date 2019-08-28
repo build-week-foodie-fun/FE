@@ -1,41 +1,45 @@
 import React, { useState, useEffect } from "react";
-// import { Link, Route } from "react-router-dom";
-// import axios from "axios";
 import ReviewCard from "./ReviewCard";
-// import SingleReviewDetail from "./SingleReviewDetail"
+import { connect } from "react-redux";
 
-export default function ReviewList(props) {
-  // const [reviews, setReviews] = useState([]);
+function ReviewList(props) {
+  const userId = parseInt(localStorage.getItem("user_id"));
+  const [userReviews, setUserReviews] = useState([]);
 
-  // useEffect(()=> {
-  //   axios
-  //     .get('https://buildweek-foodie1.herokuapp.com/public/')
-  //     .then(res => {
-  //       console.log(res.data);
-  //       setReviews(res.data)
-  //     })
-  // },[])
-  
+  useEffect(() => {
+    let filteredReviews = props.reviews.filter(review => {
+      return userId === review.user_id;
+    });
+    setUserReviews(filteredReviews);
+  }, [props.reviews]);
+
   return (
     <div>
-      {props.reviews.map(item => {
-        return (
-          <ReviewCard 
-            key={item.id}
-            id={item.id}
-            resName={item['restaurant_name']}
-            itemName={item['item_name']}
-            itemImgUrl={item['photo_of_order']}
-            foodRating={item['food_rating']}
-            price={item.price}
-          />
-        );
-      })};
-      {/* <Route 
-        path="/profile/review/:id"
-        render={props => <SingleReviewDetail {...props} reviews={reviews} />}
-      /> */}
+      {userReviews.length > 0 &&
+        userReviews.map(item => {
+          return (
+            <ReviewCard
+              key={item.id}
+              id={item.id}
+              resName={item["restaurant_name"]}
+              itemName={item["item_name"]}
+              itemImgUrl={item["photo_of_order"]}
+              foodRating={item["food_rating"]}
+              price={item.price}
+            />
+          );
+        })}
     </div>
-  )
+  );
 }
 
+const mapPropsToState = state => {
+  return {
+    reviews: state.reviews.reviews,
+  };
+};
+
+export default connect(
+  mapPropsToState,
+  {},
+)(ReviewList);

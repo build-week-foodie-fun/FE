@@ -11,7 +11,7 @@ import {
 const initialState = {
   error: "",
   isLoading: false,
-  isAuth: false,
+  isAuth: localStorage.getItem("token") ? true : false,
 };
 
 const reducers = (state = initialState, action) => {

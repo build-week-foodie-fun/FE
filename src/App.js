@@ -14,7 +14,6 @@ import FormikLoginForm from "./components/Login";
 import FormikSignUpForm from "./components/SignUpForm";
 import Profile from "./components/Profile";
 import ReviewForm from "./components/ReviewForm";
-import ReviewList from "./components/ReviewList";
 import SingleReviewDetail from "./components/SingleReviewDetail";
 
 //Material-ui
@@ -26,7 +25,7 @@ import "./App.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 50,
+    // paddingTop: 50,
   },
 }));
 
@@ -68,26 +67,22 @@ const App = () => {
         <Router>
           <NavBar />
           <Container maxWidth="md" className={classes.root}>
-            <h1>App</h1>
-
             <Switch>
               {/* {public routes} */}
               <Route path="/login" component={FormikLoginForm} />
               <Route path="/signup" component={FormikSignUpForm} />
 
               {/* {private routes} */}
-
-              <PrivateRoute path="/reviewForm" component={ReviewForm} />
+              <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
                 exact
-                path="/profile"
-                render={props => <ReviewList {...props} reviews={reviews} />}
+                path="/profile/reviewform"
+                component={ReviewForm}
               />
               <PrivateRoute
+                exact
                 path="/profile/review/:id"
-                render={props => (
-                  <SingleReviewDetail {...props} reviews={reviews} />
-                )}
+                component={SingleReviewDetail}
               />
 
               {/* {default} */}

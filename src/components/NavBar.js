@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
         paddingLeft: '1rem',
+        color: '#D80000',
     },
 }));
 
@@ -48,13 +49,14 @@ const NavBar = props => {
             <AppBar className={classes.navBar}>
                 <Toolbar>
                     <Avatar alt="Logo" src="Foodie_app_icon"/>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h4" className={classes.title}>
                         Foodie Fun
                     </Typography>
                     {!props.isAuth && <LinkButton component={RouterLink} to="/login">Login</LinkButton>}
                     {!props.isAuth && <LinkButton component={RouterLink} to="/signup">Sign up</LinkButton>}
+                    {props.isAuth && <LinkButton component={RouterLink} to="/profile">Profile</LinkButton>}
+                    {props.isAuth && <LinkButton component={RouterLink} to="/profile/reviewForm">Create Review</LinkButton>}
                     {props.isAuth && <LinkButton component={RouterLink} onClick={() => props.logout()}>Logout</LinkButton>}
-
                 </Toolbar>
             </AppBar>
         </div>
@@ -63,7 +65,7 @@ const NavBar = props => {
 
 const mapPropsToState = state => {
     return {
-        isAuth: state.isAuth,
+        isAuth: state.auth.isAuth,
     }
 };
 export default connect(mapPropsToState, {logout})(NavBar);

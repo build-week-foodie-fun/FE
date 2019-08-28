@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
-import hamburger from "../img/menu-icon.png";
+import React, { useEffect } from "react";
 import Add from "@material-ui/icons/Add";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import IconButton from "@material-ui/core/IconButton";
-import axios from "axios";
 import styled from "styled-components";
 import Pizza from "../img/pizzaResized.jpg";
-import secondary from "../App";
+import { connect } from "react-redux";
+import { getReviews } from "../store/reviews/reviewsActions";
 
 //Components
 import ReviewList from "./ReviewList";
 
-export default function Profile(props) {
-  const [userPicture, setUserPicture] = [];
-  const [userName, setUserName] = [];
   const UserImg = styled.img`
     height: 100px;
     width: 100px;
@@ -56,11 +52,9 @@ export default function Profile(props) {
     color: white;
   `;
 
+function Profile(props) {
   useEffect(() => {
-    axios
-      .get("https://buildweek-foodie1.herokuapp.com/auth/api/users/id")
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    props.getReviews();
   }, []);
 
   return (
@@ -72,7 +66,7 @@ export default function Profile(props) {
           alt="User Profile Picture"
         ></UserImg>
         <UserName>
-          <h2>Test</h2>
+          <h2>{props.username}</h2>
         </UserName>
         <Addbtn>
           <IconButton>
@@ -81,7 +75,20 @@ export default function Profile(props) {
         </Addbtn>
       </ProfileDiv>
 
-      <div className="content"></div>
+      <div className="content">
+        <ReviewList />
+       </div>
     </div>
   );
 }
+
+const mapPropsToState = state => {
+  return {
+    username: state.reviews.user,
+  };
+};
+
+export default connect(
+  mapPropsToState,
+  { getReviews },
+)(Profile);
