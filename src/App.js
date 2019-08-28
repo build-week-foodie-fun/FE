@@ -60,6 +60,7 @@ const App = () => {
                             {/* {private routes} */}
                             <PrivateRoute path="/profile" component={Profile} />
                             <PrivateRoute path="/reviewForm" component={ReviewForm} />
+                            
                             {/* {default} */} 
                             <Redirect from="/" to="/login" />
                         </Switch>
