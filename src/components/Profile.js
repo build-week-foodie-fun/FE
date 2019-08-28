@@ -35,6 +35,7 @@ function Profile(props) {
     </div>
   );
 }
+
 const mapPropsToState = state => {
   return {
     username: state.reviews.user,
