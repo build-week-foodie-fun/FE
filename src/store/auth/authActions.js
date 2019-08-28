@@ -18,6 +18,7 @@ export const login = (credentials, history) => {
     axios
       .post("https://buildweek-foodie1.herokuapp.com/auth/login", credentials)
       .then(res => {
+        console.log(res.data);
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         // set token to local storage (review console logs for correct token path)
         localStorage.setItem("token", res.data.token);

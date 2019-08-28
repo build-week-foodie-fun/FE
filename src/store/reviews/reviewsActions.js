@@ -91,7 +91,7 @@ export const getReviews = () => {
         // console.log("get reviews", res.data);
         dispatch({
           type: GET_REVIEWS_SUCCESS,
-          payload: res.data,
+          payload: res.data.data,
         });
       })
       .catch(err =>
