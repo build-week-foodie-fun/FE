@@ -19,12 +19,14 @@ const reducers = (state = initialState, action) => {
   console.log("Auth Action", action);
   switch (action.type) {
     case LOGIN_START:
+      console.log('auth-start cuurent isAuth: ', state.isAuth);
       return {
         ...state,
         error: "",
         isLoading: true,
       };
     case LOGIN_SUCCESS:
+      console.log('auth-success cuurent isAuth: ', state.isAuth, 'new isAuth: true');
       return {
         ...state,
         error: "",
@@ -33,6 +35,7 @@ const reducers = (state = initialState, action) => {
         user: action.payload.message,
       };
     case LOGIN_FAIL:
+      console.log('auth-fail cuurent isAuth: ', state.isAuth);
       return {
         ...state,
         error: action.payload,
