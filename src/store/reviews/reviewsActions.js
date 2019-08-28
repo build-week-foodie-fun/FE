@@ -1,4 +1,4 @@
-import {axiosWithAuth} from "../../utils";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 import {
   ADD_REVIEW_START,
@@ -18,43 +18,44 @@ import {
 
 //Add review
 
-export const addReview = (history, review) => dispatch => {
-    dispatch({type: ADD_REVIEW_START});
-
-    axiosWithAuth()
-        .post("/auth/api", review)
-        .then(res => {
-            dispatch({type: ADD_REVIEW_SUCCESS, payload: res.data});
-            // Re-route to main display
-            history.push("/dashboard");
-        })
-        .catch(err => {
-            dispatch({type: ADD_REVIEW_FAILURE, payload: err.response});
-        });
+export const addReview = (review, history) => dispatch => {
+  dispatch({ type: ADD_REVIEW_START });
+  axiosWithAuth()
+    .post("/auth/api", review)
+    .then(res => {
+      // console.log("Add success: ", res, res.data);
+      dispatch({ type: ADD_REVIEW_SUCCESS, payload: review });
+      // Re-route to main display
+      history.push("/profile");
+    })
+    .catch(err => {
+      dispatch({ type: ADD_REVIEW_FAILURE, payload: err.response });
+    });
 };
-
 
 //Delete review
 
 export const deleteReview = id => {
-    return dispatch => {
+  return dispatch => {
+    dispatch({
+      type: DELETE_REVIEW_START,
+    });
+    axiosWithAuth()
+      .delete(`/auth/api/${id}`)
+      .then(res => {
+        // console.log(res.data);
         dispatch({
-            type: DELETE_REVIEW_START,
+          type: DELETE_REVIEW_SUCCESS,
+          payload: id,
         });
-        axiosWithAuth()
-            .delete(`/api/${id}`)
-            .then(res => {
-                console.log(res.data);
-                dispatch({
-                    type: DELETE_REVIEW_SUCCESS,
-                    payload: id
-                });
-            })
-            .catch(err => dispatch({
-                type: DELETE_REVIEW_FAILURE,
-                payload: err.response
-            }));
-    }
+      })
+      .catch(err =>
+        dispatch({
+          type: DELETE_REVIEW_FAILURE,
+          payload: err.response,
+        }),
+      );
+  };
 };
 
 
@@ -84,21 +85,22 @@ export const editReview = (id, history, review) => {
 //Get All reviews
 
 export const getReviews = () => {
-    return dispatch => {
-        dispatch({type: GET_REVIEWS_START});
-        axiosWithAuth()
-            .get('/auth/api')
-            .then(res => {
-                console.log("get reviews", res.data);
-                dispatch({
-                    type: GET_REVIEWS_SUCCESS,
-                    payload: res.data
-                });
-            })
-            .catch(err => dispatch({
-                type: GET_REVIEWS_FAILURE,
-                payload: err.response
-            }));
-    }
+  return dispatch => {
+    dispatch({ type: GET_REVIEWS_START });
+    axiosWithAuth()
+      .get("/auth/api")
+      .then(res => {
+        // console.log("get reviews", res.data.data);
+        dispatch({
+          type: GET_REVIEWS_SUCCESS,
+          payload: res.data.data,
+        });
+      })
+      .catch(err =>
+        dispatch({
+          type: GET_REVIEWS_FAILURE,
+          payload: err.response,
+        }),
+      );
+  };
 };
-

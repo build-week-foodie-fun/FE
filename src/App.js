@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-//import ReviewForm from "./components/ReviewForm.js";
 
 //Components
 import NavBar from "./components/NavBar";
@@ -18,7 +21,6 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Container from "@material-ui/core/Container";
 
 import "./App.css";
-import Redirect from "react-router-dom/es/Redirect";
 
 const useStyles = makeStyles(theme => ({
   root: {
