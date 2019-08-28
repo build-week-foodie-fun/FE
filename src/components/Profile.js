@@ -5,7 +5,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
 import styled from "styled-components";
-import Pizza from "../img/pizza.jpg";
+import Pizza from "../img/pizzaResized.jpg";
 import secondary from "../App";
 
 //Components
