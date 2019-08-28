@@ -7,7 +7,6 @@ import { addReview } from "../store/reviews/reviewsActions";
 function ReviewForm({ touched, errors, ...props }) {
   return (
     <div className="review-form">
-      <button onClick={() => props.getReviews()}>Get List</button>
       <Form style={{ display: "flex", flexDirection: "column" }}>
         <label className="restaurant_name">
           Restaurant

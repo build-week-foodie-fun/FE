@@ -52,44 +52,46 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
-    const classes = useStyles();
-    const [reviews, setReviews] = useState([]);
+  const classes = useStyles();
+  const [reviews, setReviews] = useState([]);
 
-  useEffect(()=> {
-    axios
-      .get('https://buildweek-foodie1.herokuapp.com/public/')
-      .then(res => {
-        console.log(res.data);
-        setReviews(res.data)
-      })
-  },[])
+  useEffect(() => {
+    axios.get("https://buildweek-foodie1.herokuapp.com/public/").then(res => {
+      console.log(res.data);
+      setReviews(res.data);
+    });
+  }, []);
 
-    return (
-        <>
-            <MuiThemeProvider theme={theme}>
-                <Router>
-                    <NavBar/>
-                    <Container maxWidth="md" className={classes.root}>
-                        <h1>App</h1>
-                        <Switch>
-                            {/* {public routes} */}
-                            <Route path="/login" component={FormikLoginForm} />
-                            <Route path="/signup" component={FormikSignUpForm} />
-
-                            {/* {private routes} */}
-                 
-                            <PrivateRoute path="/reviewForm" component={ReviewForm} />
-                            <PrivateRoute exact path="/profile" render={props => <ReviewList {...props} reviews={reviews} />} />
-                            <PrivateRoute path="/profile/review/:id" render={props => <SingleReviewDetail {...props} reviews={reviews} />} />
-
-                            {/* {default} */} 
-                            <Redirect from="/" to="/login" />
-                        </Switch>
-                    </Container>
-                </Router>
-            </MuiThemeProvider>
-        </>
-    );
+  return (
+    <>
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <NavBar />
+          <Container maxWidth="md" className={classes.root}>
+            <Switch>
+              {/* {public routes} */}
+              <Route path="/login" component={FormikLoginForm} />
+              <Route path="/signup" component={FormikSignUpForm} />
+              {/* {private routes} */}
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute
+                exact
+                path="/profile/reviewForm"
+                component={ReviewForm}
+              />
+              <PrivateRoute
+                exact
+                path="/profile/review/:id"
+                component={SingleReviewDetail}
+              />
+              {/* {default} */}
+              <Redirect from="/" to="/login" />
+            </Switch>
+          </Container>
+        </Router>
+      </MuiThemeProvider>
+    </>
+  );
 };
 
 export default App;

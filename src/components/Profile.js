@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import hamburger from "../img/menu-icon.png";
 import Add from "@material-ui/icons/Add";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import IconButton from "@material-ui/core/IconButton";
