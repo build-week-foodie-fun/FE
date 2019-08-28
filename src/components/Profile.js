@@ -18,7 +18,10 @@ export default function Profile(props) {
   return (
     <div className="user-profile">
       <div className="user-picture">
-        <img src=""></img>
+        <img
+          src={require("../img/Foodie_Icon.png")}
+          alt="User Profile Picture"
+        ></img>
       </div>
       <div className="user-name">
         <h2>{props.username}</h2>
