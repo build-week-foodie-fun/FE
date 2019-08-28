@@ -41,11 +41,10 @@ function Profile(props) {
 
   );
 }
-// const mapPropsToState = state => {
-//     return {
-//         username: state.username,
-//     }
-// };
-//
-// export default connect(mapPropsToState, {})(Profile);
-export default Profile;
+const mapPropsToState = state => {
+    return {
+        username: state.auth.user,
+    }
+};
+
+export default connect(mapPropsToState, {})(Profile);
