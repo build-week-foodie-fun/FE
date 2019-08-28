@@ -14,6 +14,7 @@ const initialState = {
   reviews: [],
   error: "",
   isLoading: false,
+  activeReview: [],
 };
 
 const reducers = (state = initialState, { type, payload }) => {
@@ -67,7 +68,7 @@ const reducers = (state = initialState, { type, payload }) => {
         ...state, 
         error: "",
         isLoading: false,
-        reviews: payload
+        activeReview: state.reviews.filter(review => review.id === payload.id),
       };
     case EDIT_REVIEW_FAIL:
       return {
