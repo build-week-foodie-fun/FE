@@ -7,6 +7,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import NavBar from "./components/NavBar";
 import FormikLoginForm from "./components/Login";
 import FormikSignUpForm from "./components/SignUpForm";
+//import Profile from "./components/Profile";
 
 //Material-ui
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
