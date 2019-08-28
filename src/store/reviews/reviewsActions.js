@@ -62,8 +62,10 @@ export const deleteReview = id => {
 // Edit Review Axios Request
 
 export const grabReview = (history, review) => {
-  dispatch({ type: GRAB_REVIEW,  payload: review})
-  history.push("/reviewForm");
+  return dispatch => {
+    dispatch({ type: GRAB_REVIEW,  payload: review})
+    history.push("/reviewForm");
+  }
 };
 
 
