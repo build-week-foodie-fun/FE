@@ -1,15 +1,19 @@
 import {axiosWithAuth} from "../../utils";
 
 import {
-    ADD_REVIEW_START,
-    ADD_REVIEW_SUCCESS,
-    ADD_REVIEW_FAILURE,
-    DELETE_REVIEW_START,
-    DELETE_REVIEW_SUCCESS,
-    DELETE_REVIEW_FAILURE,
-    GET_REVIEWS_START,
-    GET_REVIEWS_SUCCESS,
-    GET_REVIEWS_FAILURE,
+  ADD_REVIEW_START,
+  ADD_REVIEW_SUCCESS,
+  ADD_REVIEW_FAILURE,
+  DELETE_REVIEW_START,
+  DELETE_REVIEW_SUCCESS,
+  DELETE_REVIEW_FAILURE,
+  GRAB_REVIEW,
+  EDIT_REVIEW_START, 
+  EDIT_REVIEW_SUCCESS, 
+  EDIT_REVIEW_FAIL,
+  GET_REVIEWS_START,
+  GET_REVIEWS_SUCCESS,
+  GET_REVIEWS_FAILURE,
 } from "./types";
 
 //Add review
@@ -53,6 +57,30 @@ export const deleteReview = id => {
     }
 };
 
+
+// Edit Review Axios Request
+
+export const grabReview = (history, review) => {
+  dispatch({ type: GRAB_REVIEW,  payload: review})
+  history.push("/reviewForm");
+};
+
+
+export const editReview = (id, history, review) => {
+  return dispatch => {
+    dispatch({ type: EDIT_REVIEW_START});
+    axiosWithAuth()
+      .put(`/reviews/${id}`, review )
+      .then(res => {
+        dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data});
+        history.push('/profile');
+      })
+      .catch(err => {
+        dispatch({ type: EDIT_REVIEW_FAIL, payload: err.response});
+      })
+  }
+};
+
 //Get All reviews
 
 export const getReviews = () => {
@@ -73,3 +101,4 @@ export const getReviews = () => {
             }));
     }
 };
+
