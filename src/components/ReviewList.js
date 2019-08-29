@@ -8,7 +8,6 @@ function ReviewList(props) {
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
-    props.getReviews();
     let filteredReviews = props.reviews.filter(review => {
       return userId === review.user_id;
     });
@@ -43,5 +42,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  {getReviews},
+  { getReviews },
 )(ReviewList);
