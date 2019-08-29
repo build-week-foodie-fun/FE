@@ -10,7 +10,7 @@ import styled from "styled-components";
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem auto;
   object-fit: cover;
 `;
 
@@ -29,9 +29,10 @@ const BtnDiv = styled.div`
   text-align: center;
 `;
 
+
 const Login = ({ errors, touched }) => {
-  return (
-    <div className="container">
+  return(
+    <div>
       <HeadImg src={require("../img/pizza.jpg")} alt="pizza" />
       <div className="loginForm">
         <LogoImg

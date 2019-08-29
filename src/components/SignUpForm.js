@@ -9,7 +9,7 @@ import styled from "styled-components";
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem 0;
   object-fit: cover;
 `;
 
@@ -30,7 +30,7 @@ const BtnDiv = styled.div`
 
 const SignUpForm = ({ errors, touched }) => {
   return (
-    <div className="container">
+    <div>
       <HeadImg src={require("../img/phoneAndFood.jpg")} alt="phone and food" />
       <div className="loginForm">
         <LogoImg

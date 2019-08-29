@@ -3,6 +3,17 @@
   font-size: 0.8rem;
 }
 
+.MuiContainer-root {
+  width: 100% !important;
+}
+
+
+ @media (min-width: 960px) {
+  .MuiContainer-maxWidthMd {
+    max-width: 100% !important;
+  }
+}
+
 .user-profile {
   max-width: 880px;
 }
@@ -12,7 +23,7 @@ h2 {
 }
 
 .container {
-  max-width: 880px;
+  width: 100%;
   margin: 0 auto;
 }
 
