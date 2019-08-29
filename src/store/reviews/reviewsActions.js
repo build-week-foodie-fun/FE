@@ -62,7 +62,7 @@ export const deleteReview = id => {
 
 export const grabReview = (history, review) => dispatch => {
   dispatch({ type: GRAB_REVIEW, payload: review });
-  history.push("/reviewForm");
+  history.push("/profile/reviewForm");
 };
 
 export const editReview = (review, history, id) => {

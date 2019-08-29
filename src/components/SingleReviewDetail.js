@@ -34,7 +34,7 @@ function SingleReviewDetail(props) {
                 </div>
             )}
 
-            <button onClick={props.grabReview(props.history, props.reviews)}>Edit</button>
+            <button onClick={() => props.grabReview(props.history, props.reviews)}>Edit</button>
             <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
         </div>
     );

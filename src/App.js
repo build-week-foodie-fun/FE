@@ -76,13 +76,13 @@ const App = () => {
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
                 exact
-                path="/profile/reviewform"
-                component={ReviewForm}
+                path="/profile/review/:id"
+                component={SingleReviewDetail}
               />
               <PrivateRoute
                 exact
-                path="/profile/review/:id"
-                component={SingleReviewDetail}
+                path="/profile/reviewform"
+                component={ReviewForm}
               />
 
               {/* {default} */}
