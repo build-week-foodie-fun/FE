@@ -135,7 +135,7 @@ const FormikReviewForm = withFormik({
       comments: values.comments || "",
       wait_time: values.wait_time || "",
       date_of_visit: values.date_of_visit || "",
-      photo_of_order: values.photo_of_order || "",
+      photo_of_order: values.photo_of_order || "https://cdn1.imggmi.com/uploads/2019/8/30/0529c2e79be5339e9cf244e25b84642d-full.png",
     };
   },
 
