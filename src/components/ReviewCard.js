@@ -18,7 +18,7 @@ export default function ReviewCard(props) {
             </Card.Content>
                 
             <Card.Content extra>
-              <a href="/profile/review/${id}">
+              <a href={`/profile/review/${id}`}>
                 <Icon name='linkify' />
                 More Info
               </a>
