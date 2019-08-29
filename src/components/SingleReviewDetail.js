@@ -23,7 +23,7 @@ export default function SingleReviewDetail (props) {
       <h4>Wait time: {wait_time}</h4>
       <p>Comments: {comments}</p>
       <p>Created at: {created_at}</p>
-      <button>Edit</button>
+      <button onClick={props.grabReview()}>Edit</button>
       <button>Delete</button>
     </div>
   );  
