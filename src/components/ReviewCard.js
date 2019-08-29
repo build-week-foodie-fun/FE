@@ -4,6 +4,7 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 export default function ReviewCard(props) {
     const {id, resName, itemName, itemImgUrl, foodRating, price} = props;
+    console.log(props)
     return (
           <Card key={id}>
             <Image src={itemImgUrl} wrapped ui={false} />

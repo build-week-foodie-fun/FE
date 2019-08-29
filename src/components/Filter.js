@@ -52,7 +52,14 @@ const FilterReview = props => {
       {/* {Mapping over the returned array from findByRestuarant to render the 
             ReviewCard component with the matching information} You may need to change prop names
             To match with the review card*/}
-      <div className="grid-view">
+      {userReviews.length === 0 ? 
+        <div> 
+            <h3 style={{textAlign: "center", margin: "50px"}}>
+                Add Your First Restuarant Review!
+            </h3>
+        </div>
+        :
+        <div className="grid-view">
         {findByRestaurant.map(item => {
           return (
             <ReviewCard
@@ -67,6 +74,8 @@ const FilterReview = props => {
           );
         })}
       </div>
+
+      }
     </div>
   );
 };
