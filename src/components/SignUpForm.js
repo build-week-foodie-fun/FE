@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
-
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeadImg = styled.img`
@@ -33,9 +33,11 @@ const SignUpForm = ({ errors, touched }) => {
     <div className="container">
       <HeadImg src={require("../img/phoneAndFood.jpg")} alt="phone and food" />
       <div className="loginForm">
-        <a href="https://build-week-foodie-fun.github.io/UI/">
-          <LogoImg src={require("../img/Foodie_Icon.png")} alt="Foodie Fun logo" />
-        </a>
+        <LogoImg
+          src={require("../img/Foodie_Icon.png")}
+          alt="Foodie Fun logo"
+        />
+
         <LoginTitle>Foodie Sign Up</LoginTitle>
 
         <Form>
@@ -64,8 +66,13 @@ const SignUpForm = ({ errors, touched }) => {
             <p className="error">{errors.password}</p>
           )}
 
-          <BtnDiv><button type="submit">Submit</button></BtnDiv>
+          <BtnDiv>
+            <button type="submit">Submit</button>
+          </BtnDiv>
         </Form>
+        <h3>
+          Already have an account? <Link to="/login">Sign In</Link> here.{" "}
+        </h3>
       </div>
     </div>
   );

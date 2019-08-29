@@ -12,8 +12,14 @@ h2 {
 }
 
 .container {
+  padding: 0;
+  margin: 0;
+}
+
+.content-container {
   max-width: 880px;
   margin: 0 auto;
+  padding: 0;
 }
 
 .loginForm {
@@ -88,4 +94,3 @@ button.outline {
 .grid-view div.card.ui {
   margin: 1.5rem;
 }
-
