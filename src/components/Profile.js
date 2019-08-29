@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import ReviewList from "./ReviewList";
 import { Link } from "@material-ui/core";
 import ReviewForm from "./ReviewForm";
+import FilterReview from "./Filter";
 
 const UserImg = styled.img`
   height: 100px;
@@ -81,7 +82,8 @@ function Profile(props) {
       </ProfileDiv>
 
       <div className="content">
-        <ReviewList />
+        <FilterReview reviews={props.reviews} />
+        {/* <ReviewList /> */}
       </div>
     </div>
   );
@@ -90,6 +92,7 @@ function Profile(props) {
 const mapPropsToState = state => {
   return {
     username: state.reviews.user,
+    reviews: state.reviews.reviews,
   };
 };
 
