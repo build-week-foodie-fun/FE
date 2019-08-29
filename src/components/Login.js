@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../store/auth/authActions";
@@ -10,7 +10,7 @@ import styled from "styled-components";
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem auto;
   object-fit: cover;
 `;
 
@@ -29,17 +29,9 @@ const BtnDiv = styled.div`
   text-align: center;
 `;
 
-const Login = ({ errors, touched, values, status }) => {
-  const [users, setUsers] = useState([]);
-  console.log(touched);
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
-    }
-  }, [status]);
-
-  return (
-    <div className="container">
+const Login = ({ errors, touched, ...props }) => {
+  return(
+    <div>
       <HeadImg src={require("../img/pizza.jpg")} alt="pizza" />
       <div className="loginForm">
         <LogoImg
@@ -66,9 +58,8 @@ const Login = ({ errors, touched, values, status }) => {
             <p className="error">{errors.password}</p>
           )}
 
-          <BtnDiv>
-            <button type="submit">Login</button>
-          </BtnDiv>
+          <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Login "}</button></BtnDiv>
+
         </Form>
         <h3>
           Don't have an account yet? <Link to="/signup">Sign Up</Link> here.{" "}
@@ -87,31 +78,24 @@ const FormikLoginForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Required"),
-    password: Yup.string()
-      .min(1)
-      .required("Required"),
+    username: Yup.string().required("Please enter your username."),
+    password: Yup.string().required("Please enter your password."),
   }),
 
   handleSubmit(values, { resetForm, props }) {
-    console.log(values);
-    console.log(props);
     props.login(values, props.history);
     resetForm();
-
-    // axios
-    //     .post('#', values)
-    //     .then(res => {
-    //         console.log(res)
-    //         setStatus(res);
-    //     })
-    //     .catch(err => console.log(err.response));
   },
 })(Login);
 
+const mapStateToProps = state => {
+  return {
+      isLoading: state.auth.isLoading,
+      error: state.auth.error,
+  }
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { login },
 )(FormikLoginForm);
-
-// export default FormikLoginForm;
