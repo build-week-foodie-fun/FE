@@ -11,21 +11,19 @@ const useStyles = makeStyles({
     root: {
         padding: 50,
     },
+    formContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'center',
+    },
     form: {
-        // width: '25%',
-        paddingRight: 30,
-        // borderRight: '1px solid black'
+
     },
     textField: {
-        // width: '100%',
-    },
-    reviews: {
-        // width: '75%',
+        width: '100%',
     },
     items: {
         height: "100%",
-        paddingTop: 5,
-        backgroundColor: "#fff"
     }
 });
 
@@ -240,12 +238,21 @@ const FilterReview = props => {
         }
     );
 
+    const resetFilters = () => {
+        setRestaurant({
+            restaurant_name: "",
+            food_rating: "",
+            item_name: "",
+            price: "",
+        });
+
+    };
 
     return (
         <div>
             <Grid layout={"row"} container className={classes.root}>
-                <Grid item xs={12} sm={3}>
-                    <form onSubmit={handleSubmit} className={classes.form}>
+                <Grid item xs={12} sm={3} alignItems={"center"} className={classes.formContainer}>
+                    <form onSubmit={handleSubmit}>
                         <label>Filter Restaurant</label>
                         <input
                             type="text"
@@ -280,30 +287,28 @@ const FilterReview = props => {
                             className={classes.textField}
                         />
                     </form>
+                    <button onClick={() => resetFilters()}>Reset Filters</button>
                 </Grid>
                 <Grid item xs={12} sm={9}>
-                    <div className={classes.reviews}>
-                        {console.log("filteredItems", filteredItems)}
-                        <Grid container spacing={2} justify={"center"} alignItems={"center"}>
-                            {filteredItems.length > 0 && filteredItems.map(item => {
-                                return (
-                                    <Grid xs={12} sm={4} md={3} item>
-                                        <div className={classes.items}>
-                                            <ReviewCard
-                                                key={item.id}
-                                                id={item.id}
-                                                resName={item["restaurant_name"]}
-                                                itemName={item["item_name"]}
-                                                itemImgUrl={item["photo_of_order"]}
-                                                foodRating={item["food_rating"]}
-                                                price={item.price}
-                                            />
-                                        </div>
-                                    </Grid>
-                                );
-                            })}
-                        </Grid>
-                    </div>
+                    <Grid container spacing={2} justify={"center"} alignItems={"center"}>
+                        {filteredItems.length > 0 && filteredItems.map(item => {
+                            return (
+                                <Grid xs={12} sm={4} md={3} item>
+                                    <div className={classes.items}>
+                                        <ReviewCard
+                                            key={item.id}
+                                            id={item.id}
+                                            resName={item["restaurant_name"]}
+                                            itemName={item["item_name"]}
+                                            itemImgUrl={item["photo_of_order"]}
+                                            foodRating={item["food_rating"]}
+                                            price={item.price}
+                                        />
+                                    </div>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
                 </Grid>
             </Grid>
         </div>
