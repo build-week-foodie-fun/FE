@@ -1,15 +1,19 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { addReview, getReviews, editReview } from "../store/reviews/reviewsActions";
+import {
+  addReview,
+  getReviews,
+  editReview,
+} from "../store/reviews/reviewsActions";
 
 import styled from "styled-components";
 
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem auto;
   object-fit: cover;
 `;
 
@@ -20,76 +24,95 @@ const LoginTitle = styled.h1`
 
 const BtnDiv = styled.div`
   text-align: center;
+  grid-column: 1 / span 2;
+`;
+
+const FormContainer = styled.div`
+  width: 880px;
+  margin: 0 auto;
+  padding: 30px;
+  font-weight: bold;
+  background: #ededed;
+  box-shadow: 2px, 2px, 10px, 10px #7c7c7c;
 `;
 
 function ReviewForm({ touched, errors, ...props }) {
-  console.log(props.reviews);
-
   useEffect(() => {
-    if(props.activeReview) {
-      props.setValues(props.activeReview)
+    if (props.activeReview) {
+      props.setValues(props.activeReview);
     }
-  },[props.activeReview])
+  }, [props.activeReview]);
 
   return (
-    <div className="container">
+    <div>
       <HeadImg src={require("../img/peopleEating.jpg")} alt="pizza" />
-      <div className="loginForm">
-        <LoginTitle>Create a new review here!</LoginTitle>
+      <FormContainer>
+        <LoginTitle>
+          {props.activeReview
+            ? "Editing a review!"
+            : "Create a new review here!"}
+        </LoginTitle>
 
-        <Form style={{ display: "flex", flexDirection: "column" }}>
+        <Form className="review_form">
           <label className="restaurant_name">
             Restaurant
-            <Field type="text" name="restaurant_name" />
+            <Field className="review_input" type="text" name="restaurant_name" />
             {touched.restaurant_name && errors.restaurant_name && (
               <p className="error">{errors.restaurant_name}</p>
             )}
           </label>
           <label className="restaurant_type">
             Restaurant Type
-            <Field type="text" name="restaurant_type" />
+            <Field className="review_input" type="text" name="restaurant_type" />
             {touched.restaurant_type && errors.restaurant_type && (
               <p className="error">{errors.restaurant_type}</p>
             )}
           </label>
           <label className="item_name">
             Food Item
-            <Field type="text" name="item_name" />
+            <Field className="review_input" type="text" name="item_name" />
             {touched.item_name && errors.item_name && (
               <p className="error">{errors.item_name}</p>
             )}
           </label>
           <label className="date_of_visit">
             Date of Visit
-            <Field type="date" name="date_of_visit" />
+            <Field className="review_input" type="date" name="date_of_visit" />
             {touched.date_of_visit && errors.date_of_visit && (
               <p className="error">{errors.date_of_visit}</p>
             )}
           </label>
           <label className="price">
             Price
-            <Field type="number" min={0} step={0.01} name="price" />
+            <Field className="review_input" type="number" min={0} step={0.01} name="price" />
             {touched.price && errors.price && (
               <p className="error">{errors.price}</p>
             )}
           </label>
           <label className="food_rating">
             Rating
-            <Field type="number" min={1} max={5} step={0.1} name="food_rating" />
+            <Field
+              className="review_input"
+              type="number"
+              min={1}
+              max={5}
+              step={0.1}
+              name="food_rating"
+            />
             {touched.food_rating && errors.food_rating && (
               <p className="error">{errors.food_rating}</p>
             )}
           </label>
           <label className="wait_time">
             Wait Time
-            <Field type="text" name="wait_time" />
+            <Field className="review_input" type="text" name="wait_time" />
             {touched.wait_time && errors.wait_time && (
               <p className="error">{errors.wait_time}</p>
             )}
           </label>
           <label className="photo_of_order">
             Photo of Order
-            <Field type="text" name="photo_of_order" placeholder="Photo url" />
+            <Field className="review_input" type="text" name="photo_of_order" placeholder="Photo url" />
             {touched.photo_of_order && errors.photo_of_order && (
               <p className="error">{errors.photo_of_order}</p>
             )}
@@ -101,11 +124,12 @@ function ReviewForm({ touched, errors, ...props }) {
               <p className="error">{errors.comments}</p>
             )}
           </label>
+
           <BtnDiv><button className="submitBtn" type="submit">
-            Submit
+            {props.error ? "Error" : props.isLoading ? "..." : "Submit "}
           </button></BtnDiv>
         </Form>
-      </div>
+      </FormContainer>
     </div>
   );
 }
@@ -122,7 +146,7 @@ const FormikReviewForm = withFormik({
       comments: values.comments || "",
       wait_time: values.wait_time || "",
       date_of_visit: values.date_of_visit || "",
-      photo_of_order: values.photo_of_order || "",
+      photo_of_order: values.photo_of_order || "https://cdn1.imggmi.com/uploads/2019/8/30/0529c2e79be5339e9cf244e25b84642d-full.png",
     };
   },
 
@@ -136,15 +160,15 @@ const FormikReviewForm = withFormik({
     food_rating: Yup.number().required("Rating is a required field."),
     comments: Yup.string(),
     wait_time: Yup.string(),
-    date_of_visit: Yup.date(),
-    // photo_of_order: Yup.string()
-    //   .url()
-    //   .required("Photo of order is a required field."),
+    date_of_visit: Yup.string(),
+    photo_of_order: Yup.string()
+      .url()
+      .required("Photo of order is a required field."),
   }),
 
   handleSubmit(values, { props }) {
     if (props.activeReview) {
-      props.editReview(values, props.history, props.activeReview.id)
+      props.editReview(values, props.history, props.activeReview.id);
     } else {
       props.addReview(values, props.history);
     }
@@ -154,7 +178,9 @@ const FormikReviewForm = withFormik({
 const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
-    activeReview: state.reviews.activeReview
+    activeReview: state.reviews.activeReview,
+    error: state.reviews.error,
+    isLoading: state.reviews.isLoading,
   };
 };
 

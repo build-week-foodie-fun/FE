@@ -19,8 +19,8 @@ const UserImg = styled.img`
   width: 100px;
   border-radius: 50%;
   margin: 2%;
-  background-color: #c6c6c6;
-  border: 2px solid #ededed;
+  background-color: white;
+  border: 2px solid #d80000;
 `;
 
 const ProfileDiv = styled.div`
@@ -41,17 +41,18 @@ const UserInfo = styled.div`
 const UserName = styled.div`
   padding: 10px 0;
   color: #ff0000;
-  background-color: #ededed;
+  background-color: white;
   text-shadow: 1px 1px 2px #ededed;
   padding: 1% 2%;
   border-radius: 30px;
   margin-bottom: 30px;
+  border: 2px solid #d80000;
 `;
 
 const Addbtn = styled.div`
   border-radius: 50%;
   margin: 10px;
-  border: 1px solid #d80000;
+  border: 2px solid #d80000;
   background-color: white;
   color: d80000;
 `;
@@ -80,11 +81,20 @@ function Profile(props) {
           </Addbtn>
         </NavLink>
       </ProfileDiv>
+      {/* {userReviews.length === 0 ? 
+       
+        <div> 
+            <h3>
+                Add Your First Restuarant Review!
+            </h3>
+        </div>
+        : */}
+        <div className="content">
+          <FilterReview reviews={props.reviews} />
+          {/* <ReviewList /> */}
+        </div>
 
-      <div className="content">
-        <FilterReview reviews={props.reviews} />
-        {/* <ReviewList /> */}
-      </div>
+      {/* } */}
     </div>
   );
 }

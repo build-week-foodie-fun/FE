@@ -289,8 +289,16 @@ const FilterReview = props => {
                     </form>
                     <button onClick={() => resetFilters()}>Reset Filters</button>
                 </Grid>
+
+              {userReviews.length === 0 ? 
+                <div> 
+                    <h3 style={{textAlign: "center", margin: "50px"}}>
+                        Add Your First Restuarant Review!
+                    </h3>
+                </div>
+                :
                 <Grid item xs={12} sm={9}>
-                    <Grid container spacing={2} justify={"center"} alignItems={"center"}>
+                    <Grid container spacing={2} justify={"center"} alignItems={"center                                                                               
                         {filteredItems.length > 0 && filteredItems.map(item => {
                             return (
                                 <Grid xs={12} sm={4} md={3} item>
@@ -307,9 +315,11 @@ const FilterReview = props => {
                                     </div>
                                 </Grid>
                             );
-                        })}
+                        })}                     
                     </Grid>
                 </Grid>
+               }
+               
             </Grid>
         </div>
     );

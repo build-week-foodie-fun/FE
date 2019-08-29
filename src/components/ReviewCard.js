@@ -4,6 +4,7 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 export default function ReviewCard(props) {
     const {id, resName, itemName, itemImgUrl, foodRating, price} = props;
+    console.log(props)
     return (
           <Card key={id}>
             <Image src={itemImgUrl} wrapped ui={false} />
@@ -18,12 +19,11 @@ export default function ReviewCard(props) {
             </Card.Content>
                 
             <Card.Content extra>
-              <a href={`/profile/review/${id}`}>
+              <Link to={`/profile/review/${id}`}>
                 <Icon name='linkify' />
                 More Info
-              </a>
+              </Link>
             </Card.Content>
-            
           </Card>
     )
 }
