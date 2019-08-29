@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react';
 
 export default function ReviewCard(props) {
     const {id, resName, itemName, itemImgUrl, foodRating, price} = props;

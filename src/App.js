@@ -52,14 +52,6 @@ const theme = createMuiTheme({
 
 const App = () => {
   const classes = useStyles();
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://buildweek-foodie1.herokuapp.com/public/").then(res => {
-      console.log(res.data);
-      setReviews(res.data);
-    });
-  }, []);
 
   return (
     <>
@@ -76,17 +68,17 @@ const App = () => {
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute
                 exact
-                path="/profile/reviewform"
-                component={ReviewForm}
-              />
-              <PrivateRoute
-                exact
                 path="/profile/review/:id"
                 component={SingleReviewDetail}
               />
+              <PrivateRoute
+                exact
+                path="/profile/reviewform"
+                component={ReviewForm}
+              />
 
               {/* {default} */}
-              <Redirect from="/" to="/login" />
+              <Redirect from="/" to="/profile" />
             </Switch>
           </Container>
         </Router>

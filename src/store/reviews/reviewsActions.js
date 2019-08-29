@@ -62,14 +62,14 @@ export const deleteReview = id => {
 
 export const grabReview = (history, review) => dispatch => {
   dispatch({ type: GRAB_REVIEW, payload: review });
-  history.push("/reviewForm");
+  history.push("/profile/reviewForm");
 };
 
-export const editReview = (id, history, review) => {
+export const editReview = (review, history, id) => {
   return dispatch => {
     dispatch({ type: EDIT_REVIEW_START });
     axiosWithAuth()
-      .put(`/reviews/${id}`, review)
+      .put(`/auth/api/${id}`, review)
       .then(res => {
         dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data });
         history.push("/profile");

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import { connect } from "react-redux";
+import { getReviews } from "../store/reviews/reviewsActions";
 
 function ReviewList(props) {
   const userId = parseInt(localStorage.getItem("user_id"));
@@ -41,5 +42,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  {},
+  { getReviews },
 )(ReviewList);
