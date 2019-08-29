@@ -102,6 +102,7 @@ const reducers = (state = initialState, { type, payload }) => {
         reviews: payload.data,
         isLoading: false,
         user: payload.loggedInUser,
+        activeReview: null,
       };
     case GET_REVIEWS_FAILURE:
       return {

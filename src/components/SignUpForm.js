@@ -9,7 +9,7 @@ import styled from "styled-components";
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem 0;
   object-fit: cover;
 `;
 
@@ -30,12 +30,13 @@ const BtnDiv = styled.div`
 
 const SignUpForm = ({ errors, touched, ...props }) => {
   return (
-    <div className="container">
+    <div>
       <HeadImg src={require("../img/phoneAndFood.jpg")} alt="phone and food" />
       <div className="loginForm">
-        <a href="https://build-week-foodie-fun.github.io/UI/">
-          <LogoImg src={require("../img/Foodie_Icon.png")} alt="Foodie Fun logo" />
-        </a>
+        <LogoImg
+          src={require("../img/Foodie_Icon.png")}
+          alt="Foodie Fun logo"
+        />
         <LoginTitle>Foodie Sign Up</LoginTitle>
 
         <Form>
@@ -43,6 +44,9 @@ const SignUpForm = ({ errors, touched, ...props }) => {
             Username
             <Field type="text" name="username" placeholder="FoodieFun" />
           </label>
+          {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
+          )}
 
           <label>
             Password
@@ -60,11 +64,12 @@ const SignUpForm = ({ errors, touched, ...props }) => {
               placeholder="Confirm Password"
             />
           </label>
-          {touched.password && errors.password && (
-            <p className="error">{errors.password}</p>
+          {touched.confirmPassword && errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword}</p>
           )}
 
           <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Submit "}</button></BtnDiv>
+
         </Form>
       </div>
     </div>
