@@ -28,7 +28,7 @@ const BtnDiv = styled.div`
   text-align: center;
 `;
 
-const SignUpForm = ({ errors, touched }) => {
+const SignUpForm = ({ errors, touched, ...props }) => {
   return (
     <div className="container">
       <HeadImg src={require("../img/phoneAndFood.jpg")} alt="phone and food" />
@@ -64,7 +64,7 @@ const SignUpForm = ({ errors, touched }) => {
             <p className="error">{errors.password}</p>
           )}
 
-          <BtnDiv><button type="submit">Submit</button></BtnDiv>
+          <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Submit "}</button></BtnDiv>
         </Form>
       </div>
     </div>
@@ -100,7 +100,14 @@ const FormikSignUpForm = withFormik({
   },
 })(SignUpForm);
 
+const mapPropsToState = state => {
+  return {
+      isLoading: state.auth.isLoading,
+      error: state.auth.error,
+  }
+};
+
 export default connect(
-  null,
+  mapPropsToState,
   { register },
 )(FormikSignUpForm);

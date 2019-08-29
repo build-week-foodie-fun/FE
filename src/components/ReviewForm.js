@@ -102,7 +102,7 @@ function ReviewForm({ touched, errors, ...props }) {
             )}
           </label>
           <BtnDiv><button className="submitBtn" type="submit">
-            Submit
+            {props.error ? "Error" : props.isLoading ? "..." : "Submit "}
           </button></BtnDiv>
         </Form>
       </div>
@@ -154,7 +154,9 @@ const FormikReviewForm = withFormik({
 const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
-    activeReview: state.reviews.activeReview
+    activeReview: state.reviews.activeReview,
+    error: state.reviews.error,
+    isLoading: state.reviews.isLoading,
   };
 };
 

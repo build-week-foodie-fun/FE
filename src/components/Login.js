@@ -29,9 +29,10 @@ const BtnDiv = styled.div`
   text-align: center;
 `;
 
-const Login = ({ errors, touched, values, status }) => {
+const Login = ({ errors, touched, values, status, ...props}) => {
   const [users, setUsers] = useState([]);
     console.log(touched)
+    console.log(props)
     useEffect(()=> {
       if (status) {
           setUsers([...users, status]);
@@ -62,7 +63,7 @@ const Login = ({ errors, touched, values, status }) => {
             <p className="error">{errors.password}</p>
           )}
 
-          <BtnDiv><button type="submit">Login</button></BtnDiv>
+          <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Login "}</button></BtnDiv>
         </Form>
         <h3>Don't have an account yet? <Link to="/signup">Sign Up</Link> here. </h3> 
       </div>           
@@ -100,6 +101,13 @@ const FormikLoginForm = withFormik({
 
 })(Login)
 
-export default connect(null, { login })(FormikLoginForm)
+const mapPropsToState = state => {
+  return {
+      isLoading: state.auth.isLoading,
+      error: state.auth.error,
+  }
+};
+
+export default connect(mapPropsToState, { login })(FormikLoginForm)
 
 // export default FormikLoginForm;
