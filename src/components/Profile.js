@@ -18,7 +18,7 @@ const UserImg = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 50%;
-
+  object-fit: cover;
   background-color: white;
   border: 2px solid #d80000;
 `;
@@ -75,7 +75,7 @@ function Profile(props) {
         <LeftInfo>
           <UserImg
             className="user-image"
-            src={require("../img/Foodie_Icon.png")}
+            src={require("../img/ProfilePic.jpg")}
             alt="User Profile Picture"
           ></UserImg>
           <UserName>Hello, {props.username}</UserName>
