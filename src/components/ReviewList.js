@@ -14,19 +14,19 @@ function ReviewList(props) {
   }, [props.reviews]);
 
   return (
-    <div>
+    <div className="grid-view">
       {userReviews.length > 0 &&
         userReviews.map(item => {
           return (
-            <ReviewCard
-              key={item.id}
-              id={item.id}
-              resName={item["restaurant_name"]}
-              itemName={item["item_name"]}
-              itemImgUrl={item["photo_of_order"]}
-              foodRating={item["food_rating"]}
-              price={item.price}
-            />
+              <ReviewCard
+                key={item.id}
+                id={item.id}
+                resName={item["restaurant_name"]}
+                itemName={item["item_name"]}
+                itemImgUrl={item["photo_of_order"]}
+                foodRating={item["food_rating"]}
+                price={item.price}
+              />
           );
         })}
     </div>
