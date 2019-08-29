@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getReviews} from "../store/reviews/reviewsActions";
-import {deleteReview} from "../store/reviews/reviewsActions";
+import {deleteReview, grabReview} from "../store/reviews/reviewsActions";
 
 function SingleReviewDetail(props) {
     useEffect(() => {
@@ -34,7 +34,7 @@ function SingleReviewDetail(props) {
                 </div>
             )}
 
-            <button onClick={props.grabReview()}>Edit</button>
+            <button onClick={props.grabReview(props.history, props.reviews)}>Edit</button>
             <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
         </div>
     );
@@ -46,4 +46,4 @@ const mapPropsToState = state => {
     }
 };
 
-export default connect(mapPropsToState, {getReviews, deleteReview})(SingleReviewDetail);
+export default connect(mapPropsToState, {getReviews, deleteReview, grabReview})(SingleReviewDetail);
