@@ -22,11 +22,6 @@ h2 {
   font-size: 12px;
 }
 
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .loginForm {
   width: 400px;
   margin: 0 auto;
@@ -110,4 +105,3 @@ button.outline {
 .grid-view div.card.ui {
   margin: 1.5rem;
 }
-

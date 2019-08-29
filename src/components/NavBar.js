@@ -1,6 +1,5 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-
 import AppBar from "@material-ui/core/AppBar/index";
 import Toolbar from "@material-ui/core/Toolbar/index";
 import Button from "@material-ui/core/Button/index";
@@ -27,6 +26,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     paddingLeft: "1rem",
     color: "#D80000",
+    fontFamily: "Nunito",
   },
 }));
 
@@ -46,7 +46,9 @@ const NavBar = props => {
     <div className={classes.root}>
       <AppBar className={classes.navBar}>
         <Toolbar>
-          <Avatar alt="Logo" src={Logo} />
+          <a href="https://build-week-foodie-fun.github.io/UI/">
+            <Avatar alt="Logo" src={Logo} />
+          </a>
           <Typography variant="h4" className={classes.title}>
             Foodie Fun
           </Typography>

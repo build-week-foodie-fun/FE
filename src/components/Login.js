@@ -38,6 +38,7 @@ const Login = ({ errors, touched, ...props }) => {
           src={require("../img/Foodie_Icon.png")}
           alt="Foodie Fun logo"
         />
+
         <LoginTitle>Foodie Login</LoginTitle>
 
         <Form>
@@ -58,7 +59,7 @@ const Login = ({ errors, touched, ...props }) => {
           )}
 
           <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Login "}</button></BtnDiv>
-            
+
         </Form>
         <h3>
           Don't have an account yet? <Link to="/signup">Sign Up</Link> here.{" "}
