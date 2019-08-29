@@ -110,14 +110,12 @@ button.outline {
 .review_form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
 }
 
 .review_input {
   width: 100%;
   height: 3rem;
   margin: 10px 0;
-  
 }
 
 .review_form label {
@@ -129,7 +127,3 @@ button.outline {
   grid-column: 1 / span 2;
   width: 90%;
 }
-
-/* .submitBtn {
-  grid-column: 1 / span 2;
-} */

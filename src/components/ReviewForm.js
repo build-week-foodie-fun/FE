@@ -124,11 +124,10 @@ function ReviewForm({ touched, errors, ...props }) {
               <p className="error">{errors.comments}</p>
             )}
           </label>
-          <BtnDiv>
-            <button className="submitBtn" type="submit">
-              Submit
-            </button>
-          </BtnDiv>
+
+          <BtnDiv><button className="submitBtn" type="submit">
+            {props.error ? "Error" : props.isLoading ? "..." : "Submit "}
+          </button></BtnDiv>
         </Form>
       </FormContainer>
     </div>
@@ -147,7 +146,7 @@ const FormikReviewForm = withFormik({
       comments: values.comments || "",
       wait_time: values.wait_time || "",
       date_of_visit: values.date_of_visit || "",
-      photo_of_order: values.photo_of_order || "",
+      photo_of_order: values.photo_of_order || "https://cdn1.imggmi.com/uploads/2019/8/30/0529c2e79be5339e9cf244e25b84642d-full.png",
     };
   },
 
@@ -180,6 +179,8 @@ const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
     activeReview: state.reviews.activeReview,
+    error: state.reviews.error,
+    isLoading: state.reviews.isLoading,
   };
 };
 
