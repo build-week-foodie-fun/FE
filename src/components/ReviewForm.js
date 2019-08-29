@@ -113,11 +113,10 @@ function ReviewForm({ touched, errors, ...props }) {
               <p className="error">{errors.comments}</p>
             )}
           </label>
-          <BtnDiv>
-            <button className="submitBtn" type="submit">
-              Submit
-            </button>
-          </BtnDiv>
+
+          <BtnDiv><button className="submitBtn" type="submit">
+            {props.error ? "Error" : props.isLoading ? "..." : "Submit "}
+          </button></BtnDiv>
         </Form>
       </div>
     </div>
@@ -169,6 +168,8 @@ const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
     activeReview: state.reviews.activeReview,
+    error: state.reviews.error,
+    isLoading: state.reviews.isLoading,
   };
 };
 
