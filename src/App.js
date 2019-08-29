@@ -52,14 +52,14 @@ const theme = createMuiTheme({
 
 const App = () => {
   const classes = useStyles();
-  const [reviews, setReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    axios.get("https://buildweek-foodie1.herokuapp.com/public/").then(res => {
-      console.log(res.data);
-      setReviews(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://buildweek-foodie1.herokuapp.com/public/").then(res => {
+  //     console.log(res.data);
+  //     setReviews(res.data);
+  //   });
+  // }, []);
 
   return (
     <>
