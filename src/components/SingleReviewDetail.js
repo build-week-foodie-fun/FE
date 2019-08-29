@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getReviews} from "../store/reviews/reviewsActions";
+import {deleteReview} from "../store/reviews/reviewsActions";
 
 function SingleReviewDetail(props) {
     useEffect(() => {
@@ -10,6 +11,11 @@ function SingleReviewDetail(props) {
     const review = props.reviews.find(
         review => review.id === parseInt(props.match.params.id, 10)
     );
+
+    const handleDelete = () =>{
+        props.deleteReview();
+        props.history.push('/profile');
+    };
 
     return (
         <div>
@@ -29,7 +35,7 @@ function SingleReviewDetail(props) {
             )}
 
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </div>
     );
 }
@@ -39,4 +45,4 @@ const mapPropsToState = state => {
         reviews: state.reviews.reviews,
     }
 };
-export default connect(mapPropsToState, {getReviews})(SingleReviewDetail);
+export default connect(mapPropsToState, {getReviews, deleteReview})(SingleReviewDetail);
