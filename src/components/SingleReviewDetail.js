@@ -1,30 +1,49 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, {useEffect, useState} from "react";
+import {connect} from "react-redux";
+import {getReviews} from "../store/reviews/reviewsActions";
+import {deleteReview} from "../store/reviews/reviewsActions";
 
+function SingleReviewDetail(props) {
+    useEffect(() => {
+        props.getReviews();
+    }, [props.reviews]);
 
-export default function SingleReviewDetail (props) {
-  console.log(props.reviews)
-  const review =props.reviews.find(review => {
-    return `${review.id}` === props.match.params.id});
-  console.log('review',review)
+    const review = props.reviews.find(
+        review => review.id === parseInt(props.match.params.id, 10)
+    );
 
-  
-  const { comments, created_at, date_of_visit, food_rating, item_name, photo_of_order, price, restaurant_name, restaurant_type, wait_time  } = review;
-   
-  return (
-    <div>
-      <h1>{restaurant_name}</h1>
-      <p>{restaurant_type}</p>
-      <h3>{item_name}</h3>
-      <img src={photo_of_order} alt={item_name} />
-      <p>Date of visit: {date_of_visit}</p>
-      <h3>Price: ${price}</h3>
-      <h3>Food rating: {food_rating}</h3>
-      <h4>Wait time: {wait_time}</h4>
-      <p>Comments: {comments}</p>
-      <p>Created at: {created_at}</p>
-      <button onClick={props.grabReview()}>Edit</button>
-      <button>Delete</button>
-    </div>
-  );  
+    const handleDelete = (id) =>{
+        props.deleteReview(id);
+        props.history.push('/profile');
+    };
+
+    return (
+        <div>
+            {typeof review !== 'undefined' && (
+                <div>
+                    <h1>{review.restaurant_name}</h1>
+                    < p> {review.restaurant_type}</p>
+                    <h3>{review.item_name}</h3>
+                    <img src={review.photo_of_order} alt={review.item_name}/>
+                    <p>Date of visit: {review.date_of_visit}</p>
+                    <h3>Price: ${review.price}</h3>
+                    <h3>Food rating: {review.food_rating}</h3>
+                    <h4>Wait time: {review.wait_time}</h4>
+                    <p>Comments: {review.comments}</p>
+                    <p>Created at: {review.created_at}</p>
+                </div>
+            )}
+
+            <button onClick={props.grabReview()}>Edit</button>
+            <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
+        </div>
+    );
 }
+
+const mapPropsToState = state => {
+    return {
+        reviews: state.reviews.reviews,
+    }
+};
+
+export default connect(mapPropsToState, {getReviews, deleteReview})(SingleReviewDetail);
