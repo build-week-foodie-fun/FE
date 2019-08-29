@@ -114,7 +114,11 @@ const FormikReviewForm = withFormik({
   }),
 
   handleSubmit(values, { props }) {
-    props.addReview(values, props.history);
+    if (props.activeReview) {
+      props.editReview(values, props.history, props.reviews.id)
+    } else {
+      props.addReview(values, props.history);
+    }
   },
 })(ReviewForm);
 

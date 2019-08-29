@@ -34,7 +34,7 @@ function SingleReviewDetail(props) {
                 </div>
             )}
 
-            <button>Edit</button>
+            <button onClick={props.grabReview()}>Edit</button>
             <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
         </div>
     );
@@ -45,4 +45,5 @@ const mapPropsToState = state => {
         reviews: state.reviews.reviews,
     }
 };
+
 export default connect(mapPropsToState, {getReviews, deleteReview})(SingleReviewDetail);
