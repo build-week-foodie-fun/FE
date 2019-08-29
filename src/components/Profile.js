@@ -19,6 +19,8 @@ const UserImg = styled.img`
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+  margin: 2%;
+
   background-color: white;
   border: 2px solid #d80000;
 `;
@@ -42,6 +44,7 @@ const UserName = styled.h2`
 
   color: #ff0000;
 
+
   border-radius: 30px;
   margin-bottom: 30px;
   word-wrap: break-word;
@@ -51,6 +54,22 @@ const LeftInfo = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 2%;
+
+  background-color: white;
+  text-shadow: 1px 1px 2px #ededed;
+  padding: 1% 2%;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  border: 2px solid #d80000;
+`;
+
+const Addbtn = styled.div`
+  border-radius: 50%;
+  margin: 10px;
+  border: 2px solid #d80000;
+  background-color: white;
+  color: d80000;
+
 `;
 
 // const Addbtn = styled.button`
@@ -89,6 +108,21 @@ function Profile(props) {
         <FilterReview reviews={props.reviews} />
         {/* <ReviewList /> */}
       </div>
+      </ProfileDiv>
+      {/* {userReviews.length === 0 ? 
+       
+        <div> 
+            <h3>
+                Add Your First Restuarant Review!
+            </h3>
+        </div>
+        : */}
+        <div className="content">
+          <FilterReview reviews={props.reviews} />
+          {/* <ReviewList /> */}
+        </div>
+
+      {/* } */}
     </div>
   );
 }
