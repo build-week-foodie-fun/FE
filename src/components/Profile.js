@@ -81,11 +81,20 @@ function Profile(props) {
           </Addbtn>
         </NavLink>
       </ProfileDiv>
+      {/* {userReviews.length === 0 ? 
+       
+        <div> 
+            <h3>
+                Add Your First Restuarant Review!
+            </h3>
+        </div>
+        : */}
+        <div className="content">
+          <FilterReview reviews={props.reviews} />
+          {/* <ReviewList /> */}
+        </div>
 
-      <div className="content">
-        <FilterReview reviews={props.reviews} />
-        {/* <ReviewList /> */}
-      </div>
+      {/* } */}
     </div>
   );
 }
