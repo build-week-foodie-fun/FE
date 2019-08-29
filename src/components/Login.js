@@ -10,7 +10,7 @@ import styled from "styled-components";
 const HeadImg = styled.img`
   width: 100%;
   height: 200px;
-  margin: 0;
+  margin: 2rem auto;
   object-fit: cover;
 `;
 
@@ -39,7 +39,7 @@ const Login = ({ errors, touched, values, status }) => {
     }, [status])
 
   return(
-    <div className="container">
+    <div>
       <HeadImg src={require("../img/pizza.jpg")} alt="pizza" />
       <div className="loginForm">
         <a href="https://build-week-foodie-fun.github.io/UI/">
