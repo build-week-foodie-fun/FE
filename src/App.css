@@ -7,8 +7,7 @@
   width: 100% !important;
 }
 
-
- @media (min-width: 960px) {
+@media (min-width: 960px) {
   .MuiContainer-maxWidthMd {
     max-width: 100% !important;
   }
@@ -19,7 +18,7 @@
 }
 
 h2 {
-  font-size: 12px;
+  font-size: 24px;
 }
 
 .loginForm {
@@ -77,7 +76,7 @@ button {
 
 button:hover {
   background: #fff;
-  color:#d80000;
+  color: #d80000;
 }
 
 button:disabled {
