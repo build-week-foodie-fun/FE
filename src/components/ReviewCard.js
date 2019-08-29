@@ -1,26 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
+import {Link} from "react-router-dom";
+import { Card, Icon, Image } from 'semantic-ui-react';
 
-export default function ReviewCard (props) {
-  const { id, resName, itemName, itemImgUrl, foodRating, price} = props;
-  return (
-    <Card>
-        <CardMedia
-            image={itemImgUrl}
-            />
-      {/*<img src={itemImgUrl} alt={itemName} />*/}
-      <CardContent>
-      </CardContent>
-      <h3>{resName}</h3>
-      <p>{itemName}</p>
-      <h3>{price}</h3>
-      <h4>{foodRating}</h4>
-      <Link to={`/profile/review/${id}`}>
-        <h4>...</h4>
-      </Link>
-    </Card>
-  )
+export default function ReviewCard(props) {
+    const {id, resName, itemName, itemImgUrl, foodRating, price} = props;
+    return (
+          <Card key={id}>
+            <Image src={itemImgUrl} wrapped ui={false} />
+
+            <Card.Content>
+              <Card.Header>{resName}</Card.Header>
+              <Card.Meta>{itemName}</Card.Meta>
+              <Card.Description>
+                {`Price: $${price}`} <br />
+                {`Rating: ${foodRating}`}
+              </Card.Description>
+            </Card.Content>
+                
+            <Card.Content extra>
+              <a href="/profile/review/${id}">
+                <Icon name='linkify' />
+                More Info
+              </a>
+            </Card.Content>
+            
+          </Card>
+    )
 }
