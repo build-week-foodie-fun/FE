@@ -18,7 +18,7 @@ const initialState = {
   reviews: [],
   error: "",
   isLoading: false,
-  activeReview: [],
+  activeReview: null,
   user: "",
 };
 
@@ -68,7 +68,7 @@ const reducers = (state = initialState, { type, payload }) => {
         ...state,
         error: "",
         isLoading: false,
-        activeReview: state.reviews.filter(review => review.id === payload.id),
+        activeReview: payload,
       };
     case EDIT_REVIEW_START:
       return {
@@ -81,7 +81,7 @@ const reducers = (state = initialState, { type, payload }) => {
         ...state,
         error: "",
         isLoading: false,
-        activeReview: [],
+        activeReview: null,
       };
     case EDIT_REVIEW_FAIL:
       return {

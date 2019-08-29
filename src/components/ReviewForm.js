@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { addReview, getReviews } from "../store/reviews/reviewsActions";
+import { addReview, getReviews, editReview } from "../store/reviews/reviewsActions";
 
 import styled from "styled-components";
 
@@ -24,6 +24,13 @@ const BtnDiv = styled.div`
 
 function ReviewForm({ touched, errors, ...props }) {
   console.log(props.reviews);
+
+  useEffect(() => {
+    if(props.activeReview) {
+      props.setValues(props.activeReview)
+    }
+  },[props.activeReview])
+
   return (
     <div className="container">
       <HeadImg src={require("../img/peopleEating.jpg")} alt="pizza" />
@@ -137,7 +144,7 @@ const FormikReviewForm = withFormik({
 
   handleSubmit(values, { props }) {
     if (props.activeReview) {
-      props.editReview(values, props.history, props.reviews.id)
+      props.editReview(values, props.history, props.activeReview.id)
     } else {
       props.addReview(values, props.history);
     }
@@ -147,10 +154,11 @@ const FormikReviewForm = withFormik({
 const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
+    activeReview: state.reviews.activeReview
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addReview, getReviews },
+  { addReview, getReviews, editReview },
 )(FormikReviewForm);
