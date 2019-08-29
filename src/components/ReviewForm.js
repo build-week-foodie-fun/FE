@@ -1,8 +1,12 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { addReview, getReviews, editReview } from "../store/reviews/reviewsActions";
+import {
+  addReview,
+  getReviews,
+  editReview,
+} from "../store/reviews/reviewsActions";
 
 import styled from "styled-components";
 
@@ -23,19 +27,21 @@ const BtnDiv = styled.div`
 `;
 
 function ReviewForm({ touched, errors, ...props }) {
-  console.log(props.reviews);
-
   useEffect(() => {
-    if(props.activeReview) {
-      props.setValues(props.activeReview)
+    if (props.activeReview) {
+      props.setValues(props.activeReview);
     }
-  },[props.activeReview])
+  }, [props.activeReview]);
 
   return (
     <div className="container">
       <HeadImg src={require("../img/peopleEating.jpg")} alt="pizza" />
       <div className="loginForm">
-        <LoginTitle>Create a new review here!</LoginTitle>
+        <LoginTitle>
+          {props.activeReview
+            ? "Editing a review!"
+            : "Create a new review here!"}
+        </LoginTitle>
 
         <Form style={{ display: "flex", flexDirection: "column" }}>
           <label className="restaurant_name">
@@ -75,7 +81,13 @@ function ReviewForm({ touched, errors, ...props }) {
           </label>
           <label className="food_rating">
             Rating
-            <Field type="number" min={1} max={5} step={0.1} name="food_rating" />
+            <Field
+              type="number"
+              min={1}
+              max={5}
+              step={0.1}
+              name="food_rating"
+            />
             {touched.food_rating && errors.food_rating && (
               <p className="error">{errors.food_rating}</p>
             )}
@@ -101,9 +113,11 @@ function ReviewForm({ touched, errors, ...props }) {
               <p className="error">{errors.comments}</p>
             )}
           </label>
-          <BtnDiv><button className="submitBtn" type="submit">
-            Submit
-          </button></BtnDiv>
+          <BtnDiv>
+            <button className="submitBtn" type="submit">
+              Submit
+            </button>
+          </BtnDiv>
         </Form>
       </div>
     </div>
@@ -136,15 +150,15 @@ const FormikReviewForm = withFormik({
     food_rating: Yup.number().required("Rating is a required field."),
     comments: Yup.string(),
     wait_time: Yup.string(),
-    date_of_visit: Yup.date(),
-    // photo_of_order: Yup.string()
-    //   .url()
-    //   .required("Photo of order is a required field."),
+    date_of_visit: Yup.string(),
+    photo_of_order: Yup.string()
+      .url()
+      .required("Photo of order is a required field."),
   }),
 
   handleSubmit(values, { props }) {
     if (props.activeReview) {
-      props.editReview(values, props.history, props.activeReview.id)
+      props.editReview(values, props.history, props.activeReview.id);
     } else {
       props.addReview(values, props.history);
     }
@@ -154,7 +168,7 @@ const FormikReviewForm = withFormik({
 const mapStateToProps = state => {
   return {
     reviews: state.reviews.reviews,
-    activeReview: state.reviews.activeReview
+    activeReview: state.reviews.activeReview,
   };
 };
 
