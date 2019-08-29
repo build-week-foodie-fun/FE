@@ -12,8 +12,8 @@ function SingleReviewDetail(props) {
         review => review.id === parseInt(props.match.params.id, 10)
     );
 
-    const handleDelete = () =>{
-        props.deleteReview();
+    const handleDelete = (id) =>{
+        props.deleteReview(id);
         props.history.push('/profile');
     };
 
@@ -35,7 +35,7 @@ function SingleReviewDetail(props) {
             )}
 
             <button>Edit</button>
-            <button onClick={() => handleDelete()}>Delete</button>
+            <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
         </div>
     );
 }
