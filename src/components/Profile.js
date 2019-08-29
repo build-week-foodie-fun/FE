@@ -108,7 +108,6 @@ function Profile(props) {
         <FilterReview reviews={props.reviews} />
         {/* <ReviewList /> */}
       </div>
-      </ProfileDiv>
       {/* {userReviews.length === 0 ? 
        
         <div> 

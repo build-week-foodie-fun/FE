@@ -130,6 +130,7 @@ button.outline {
 #AddReviewBtn:hover {
   background-color: #d80000;
   color: white;
+}
 
 .review_form {
   display: grid;
