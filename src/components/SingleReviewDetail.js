@@ -6,7 +6,7 @@ import {deleteReview, grabReview} from "../store/reviews/reviewsActions";
 function SingleReviewDetail(props) {
     useEffect(() => {
         props.getReviews();
-    }, [props.reviews]);
+    }, []);
 
     const review = props.reviews.find(
         review => review.id === parseInt(props.match.params.id, 10)
@@ -18,8 +18,10 @@ function SingleReviewDetail(props) {
     };
 
     return (
-        <div>
-            {typeof review !== 'undefined' && (
+        <>
+
+        {typeof review !== 'undefined' && (
+            <div>
                 <div>
                     <h1>{review.restaurant_name}</h1>
                     < p> {review.restaurant_type}</p>
@@ -32,11 +34,13 @@ function SingleReviewDetail(props) {
                     <p>Comments: {review.comments}</p>
                     <p>Created at: {review.created_at}</p>
                 </div>
-            )}
 
-            <button onClick={() => props.grabReview(props.history, props.reviews)}>Edit</button>
-            <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
-        </div>
+                <button onClick={() => props.grabReview(props.history, review)}>Edit</button>
+                <button onClick={() => handleDelete(props.match.params.id)}>Delete</button>
+            </div>
+        )}
+
+        </>
     );
 }
 
