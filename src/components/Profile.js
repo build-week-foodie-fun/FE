@@ -18,29 +18,43 @@ const UserImg = styled.img`
   height: 100px;
   width: 100px;
   border-radius: 50%;
+  object-fit: cover;
   margin: 2%;
+
   background-color: white;
   border: 2px solid #d80000;
 `;
 
-const ProfileDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: url(${Pizza});
-  background-size: cover;
-  justify-content: space-around;
-  align-items: center;
+const HeaderImg = styled.img`
+  width: 100%;
+  height: 200px;
+  margin: 2rem 0;
+  object-fit: cover;
 `;
 
 const UserInfo = styled.div`
-  width: 75%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
-const UserName = styled.div`
-  padding: 10px 0;
+const UserName = styled.h2`
+  width: 100%;
+  padding: 15px 30px;
+
   color: #ff0000;
+
+
+  border-radius: 30px;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+`;
+
+const LeftInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2%;
+
   background-color: white;
   text-shadow: 1px 1px 2px #ededed;
   padding: 1% 2%;
@@ -55,7 +69,16 @@ const Addbtn = styled.div`
   border: 2px solid #d80000;
   background-color: white;
   color: d80000;
+
 `;
+
+// const Addbtn = styled.button`
+//   border-radius: 50%;
+//   margin: 10px;
+//   border: 2px solid #d80000;
+//   background-color: white;
+//   color: d80000;
+// `;
 
 function Profile(props) {
   useEffect(() => {
@@ -63,23 +86,28 @@ function Profile(props) {
   }, []);
 
   return (
-    <div className="user-profile">
-      <ProfileDiv>
-        <UserImg
-          className="user-image"
-          src={require("../img/Foodie_Icon.png")}
-          alt="User Profile Picture"
-        ></UserImg>
-        <UserName>
-          <h2>{props.username}</h2>
-        </UserName>
+    <div className="Profile-page">
+      <div className="user-profile">
+        <HeaderImg src={require("../img/pizza.jpg")} alt="Food Banner" />
+      </div>
+      <UserInfo>
+        <LeftInfo>
+          <UserImg
+            className="user-image"
+            src={require("../img/ProfilePic.jpg")}
+            alt="User Profile Picture"
+          ></UserImg>
+          <UserName>Hello, {props.username}</UserName>
+        </LeftInfo>
+
         <NavLink to="/profile/reviewForm">
-          <Addbtn>
-            <IconButton>
-              <Add color="primary" />
-            </IconButton>
-          </Addbtn>
+          <button Id="AddReviewBtn">+</button>
         </NavLink>
+      </UserInfo>
+      <div className="content">
+        <FilterReview reviews={props.reviews} />
+        {/* <ReviewList /> */}
+      </div>
       </ProfileDiv>
       {/* {userReviews.length === 0 ? 
        
