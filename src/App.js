@@ -59,7 +59,7 @@ const App = () => {
             <MuiThemeProvider theme={theme}>
                 <Router>
                     <NavBar/>
-                    <Container maxWidth="lg" className={classes.root}>
+                    <Container maxWidth = {false} className={classes.root}>
                         <Switch>
                             {/* {public routes} */}
                             <Route path="/login" component={FormikLoginForm}/>
