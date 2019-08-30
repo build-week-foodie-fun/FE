@@ -15,7 +15,7 @@ To begin using the App as a client end user, follow the link and Sign Up for a n
 To login to the App, follow the link and login with the correct username and password.
 <img width="600" height="400" src="https://raw.githubusercontent.com/build-week-foodie-fun/FE/development/src/img/Login.png" />
 
-To view the profile, login with user creentials and the first page rendered after the login is the profile. On the profile page, there will be the user info, reviews and filter.
+To view the profile, login with user credentials and the first page rendered after the login is the profile. On the profile page, there will be the user info, reviews and filter.
 <img width="600" height="400" src="https://raw.githubusercontent.com/build-week-foodie-fun/FE/development/src/img/ProfilePage.png" />
 
 To use the filter, enter the restaurant name, food item name, price, rating, or date of visit on the corresponding field and the corresponding reviews will be available to view.
