@@ -44,7 +44,6 @@ const UserName = styled.h2`
 
   color: #ff0000;
 
-
   border-radius: 30px;
   margin-bottom: 30px;
   word-wrap: break-word;
@@ -69,7 +68,6 @@ const Addbtn = styled.div`
   border: 2px solid #d80000;
   background-color: white;
   color: d80000;
-
 `;
 
 // const Addbtn = styled.button`
@@ -90,7 +88,16 @@ function Profile(props) {
       <div className="user-profile">
         <HeaderImg src={require("../img/pizza.jpg")} alt="Food Banner" />
       </div>
-      <UserInfo>
+      <div className="Profile-Info">
+        <img
+          className="user-picture"
+          src={require("../img/ProfilePic.jpg")}
+          alt="User Profile Picture"
+        />
+        <h2 className="welcome-text">Hello, {props.username}</h2>
+        <button className="addButton">+</button>
+      </div>
+      {/* <UserInfo>
         <LeftInfo>
           <UserImg
             className="user-image"
@@ -103,7 +110,7 @@ function Profile(props) {
         <NavLink to="/profile/reviewForm">
           <button Id="AddReviewBtn">+</button>
         </NavLink>
-      </UserInfo>
+      </UserInfo> */}
 
       <div className="content">
         <FilterReview reviews={props.reviews} />
