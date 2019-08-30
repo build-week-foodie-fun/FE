@@ -58,7 +58,7 @@ const Login = ({ errors, touched, ...props }) => {
             <p className="error">{errors.password}</p>
           )}
 
-          <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Login "}</button></BtnDiv>
+          <BtnDiv><button type="submit">{props.isLoading ? "..." : "Login "}</button></BtnDiv>
 
         </Form>
         <h3>

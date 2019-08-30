@@ -126,7 +126,7 @@ function ReviewForm({ touched, errors, ...props }) {
           </label>
 
           <BtnDiv><button className="submitBtn" type="submit">
-            {props.error ? "Error" : props.isLoading ? "..." : "Submit "}
+            {props.isLoading ? "..." : "Submit "}
           </button></BtnDiv>
         </Form>
       </FormContainer>

@@ -69,7 +69,7 @@ const SignUpForm = ({ errors, touched, ...props }) => {
             <p className="error">{errors.confirmPassword}</p>
           )}
 
-          <BtnDiv><button type="submit">{props.error ? "Error" : props.isLoading ? "..." : "Submit "}</button></BtnDiv>
+          <BtnDiv><button type="submit">{props.isLoading ? "..." : "Submit "}</button></BtnDiv>
 
         </Form>
         <h3>
