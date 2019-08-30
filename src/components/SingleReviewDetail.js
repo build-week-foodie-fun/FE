@@ -41,11 +41,6 @@ function SingleReviewDetail(props) {
     review => review.id === parseInt(props.match.params.id, 10),
   );
 
-  const handleDelete = id => {
-    props.deleteReview(id);
-    props.history.push("/profile");
-  };
-
   return (
     <div className="singleDetailBox">
       {typeof review !== "undefined" && (
@@ -71,7 +66,9 @@ function SingleReviewDetail(props) {
           </button>
           <button
             className="reviewBtn"
-            onClick={() => handleDelete(props.match.params.id)}
+            onClick={() =>
+              props.deleteReview(props.match.params.id, props.history)
+            }
           >
             Delete
           </button>
