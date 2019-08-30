@@ -3,28 +3,6 @@
   font-size: 0.8rem;
 }
 
-
-/*.user-profile {*/
-/*  max-width: 880px;*/
-/*}*/
-
-.MuiContainer-root {
-  width: 100% !important;
-}
-
-
-@media (min-width: 960px) {
-  .MuiContainer-maxWidthMd {
-    max-width: 100% !important;
-  }
-}
-
-/* .user-profile {
-  max-width: 880px;
-  margin: 0 auto;
-} */
-
-
 h2 {
   font-size: 24px;
 }
@@ -83,8 +61,9 @@ button {
 }
 
 button:hover {
-  background: #fff;
+  background: #f5f2f2;
   color: #d80000;
+  border: 2px solid #7c7c7c;
 }
 
 button:disabled {
@@ -112,7 +91,6 @@ button.outline {
 .grid-view div.card.ui {
   margin: 1.5rem;
 }
-
 
 #AddReviewBtn {
   height: 55px;
@@ -145,11 +123,40 @@ button.outline {
 
 .review_form label {
   width: 80%;
-  justify-self: center;
+  justify-self: space-between;
 }
 
 .review_form .comments {
   grid-column: 1 / span 2;
   width: 90%;
+}
 
+.Profile-Info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-picture {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-top: -80px;
+  margin-left: 40px;
+}
+
+.welcome-text {
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+.addButton {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  margin: 0%;
+  margin-left: 40%;
+  margin-bottom: 25px;
+  margin-right: 40px;
+  font-size: 24px;
 }
