@@ -3,17 +3,8 @@
   font-size: 0.8rem;
 }
 
-.user-profile {
-  max-width: 880px;
-}
-
 h2 {
-  font-size: 12px;
-}
-
-.container {
-  max-width: 880px;
-  margin: 0 auto;
+  font-size: 24px;
 }
 
 .loginForm {
@@ -54,10 +45,11 @@ label {
 }
 
 button {
-  max-width: 150px;
+  width: 100px;
   margin: 32px auto;
   padding: 12px 20px;
   border-style: none;
+  border-radius: 10px;
   background-color: #d80000;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   font-size: 17px;
@@ -66,6 +58,12 @@ button {
   cursor: pointer;
   outline: none;
   -webkit-appearance: none;
+}
+
+button:hover {
+  background: #f5f2f2;
+  color: #d80000;
+  border: 2px solid #7c7c7c;
 }
 
 button:disabled {
@@ -79,7 +77,12 @@ button.outline {
   color: #555;
 }
 
+.reviewBtn {
+  margin: 16px;
+}
+
 .grid-view {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -89,3 +92,125 @@ button.outline {
   margin: 1.5rem;
 }
 
+#AddReviewBtn {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
+  border: 2px solid #d80000;
+  color: #d80000;
+  font-size: 16px;
+  margin: 0px;
+  margin-top: 25px;
+}
+
+#AddReviewBtn:hover {
+  background-color: #d80000;
+  color: white;
+}
+
+.review_form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.review_input {
+  width: 100%;
+  height: 3rem;
+  margin: 10px 0;
+}
+
+.review_form label {
+  width: 80%;
+  justify-self: center;
+}
+
+.review_form .comments {
+  grid-column: 1 / span 2;
+  width: 90%;
+}
+
+.Profile-Info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-picture {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-top: -80px;
+  margin-left: 40px;
+}
+
+.welcome-text {
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+.addButton {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  margin: 0%;
+  margin-left: 40%;
+  margin-bottom: 25px;
+  margin-right: 40px;
+  font-size: 24px;
+}
+
+.ui.card {
+  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.singleDetailBox {
+  animation:  puff-in-center 1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+};
+
+@keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}

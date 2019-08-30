@@ -23,7 +23,6 @@ export const addReview = (review, history) => dispatch => {
   axiosWithAuth()
     .post("/auth/api", review)
     .then(res => {
-      // console.log("Add success: ", res, res.data);
       dispatch({ type: ADD_REVIEW_SUCCESS, payload: review });
       // Re-route to main display
       history.push("/profile");
@@ -35,7 +34,7 @@ export const addReview = (review, history) => dispatch => {
 
 //Delete review
 
-export const deleteReview = id => {
+export const deleteReview = (id, history) => {
   return dispatch => {
     dispatch({
       type: DELETE_REVIEW_START,
@@ -43,11 +42,11 @@ export const deleteReview = id => {
     axiosWithAuth()
       .delete(`/auth/api/${id}`)
       .then(res => {
-        // console.log(res.data);
         dispatch({
           type: DELETE_REVIEW_SUCCESS,
           payload: id,
         });
+        history.push("/profile");
       })
       .catch(err =>
         dispatch({
@@ -88,7 +87,6 @@ export const getReviews = () => {
     axiosWithAuth()
       .get("/auth/api")
       .then(res => {
-        // console.log("get reviews", res.data);
         dispatch({
           type: GET_REVIEWS_SUCCESS,
           payload: res.data,

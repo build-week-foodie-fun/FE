@@ -12,7 +12,7 @@ function ReviewList(props) {
       return userId === review.user_id;
     });
     setUserReviews(filteredReviews);
-  }, [props.reviews]);
+  }, [props.reviews, userId]);
 
   return (
     <div className="grid-view">
