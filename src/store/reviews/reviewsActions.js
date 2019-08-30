@@ -35,7 +35,7 @@ export const addReview = (review, history) => dispatch => {
 
 //Delete review
 
-export const deleteReview = id => {
+export const deleteReview = (id, history) => {
   return dispatch => {
     dispatch({
       type: DELETE_REVIEW_START,
@@ -48,6 +48,7 @@ export const deleteReview = id => {
           type: DELETE_REVIEW_SUCCESS,
           payload: id,
         });
+        history.push("/profile");
       })
       .catch(err =>
         dispatch({
