@@ -95,7 +95,9 @@ function Profile(props) {
           alt="User Profile Picture"
         />
         <h2 className="welcome-text">Hello, {props.username}</h2>
-        <button className="addButton">+</button>
+        <NavLink to="/profile/reviewForm" className="addButton">
+          <button className="addButton">+</button>
+        </NavLink>
       </div>
       {/* <UserInfo>
         <LeftInfo>
