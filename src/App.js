@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {
     Switch,
     BrowserRouter as Router,
@@ -17,7 +17,6 @@ import SingleReviewDetail from "./components/SingleReviewDetail";
 
 //Material-ui
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 
 
 import "./App.css";

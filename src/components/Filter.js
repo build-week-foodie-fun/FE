@@ -72,7 +72,8 @@ const FilterReview = props => {
             return userId === review.user_id;
         });
         setUserReviews(filteredReviews);
-    }, [props.reviews]);
+    }, [props.reviews, userId]);
+    
     // declared state for filter input
     const [restaurant, setRestaurant] = useState({
         restaurant_name: "",
@@ -93,13 +94,6 @@ const FilterReview = props => {
     const handleSubmit = event => {
         event.preventDefault();
     };
-
-    // This is the logic for the filter method which filters through the reviews, and returns the ones that match in a new array
-    const findByRestaurant = userReviews.filter(review => {
-        return review.restaurant_name
-            .toLowerCase()
-            .includes(restaurant.restaurant_name.toLowerCase())
-    });
 
 
     const filteredItems = userReviews.filter(review => {
