@@ -28,6 +28,12 @@ const useStyles = makeStyles(theme => ({
     color: "#D80000",
     fontFamily: "Nunito",
   },
+  logoLink: {
+    color: "#D80000",
+    "&:hover": {
+      color: "black",
+    },
+  },
 }));
 
 const LinkButton = withStyles(theme => ({
@@ -50,7 +56,12 @@ const NavBar = props => {
             <Avatar alt="Logo" src={Logo} />
           </a>
           <Typography variant="h4" className={classes.title}>
-            Foodie Fun
+            <a
+              href="https://build-week-foodie-fun.github.io/UI/"
+              className={classes.logoLink}
+            >
+              Foodie Fun
+            </a>
           </Typography>
           {!props.isAuth && (
             <LinkButton component={RouterLink} to="/login">
