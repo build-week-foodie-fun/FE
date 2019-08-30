@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     },
     textField: {
         width: '100%',
+        paddingLeft: 30,
     },
     items: {
         height: "100%",
@@ -45,7 +46,7 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 2,
+        marginLeft: 5,
     },
     search: {
         position: 'relative',
@@ -298,7 +299,7 @@ const FilterReview = props => {
                                     name="restaurant_name"
                                     values={restaurant.restaurant_name}
                                     onChange={handleChange}
-                                    placeholder='    Restaurant name'
+                                    placeholder='Restaurant name'
                                     className={classes.textField}
                                 />
                             </div>
@@ -311,7 +312,7 @@ const FilterReview = props => {
                                     name="food_rating"
                                     values={restaurant.food_rating}
                                     onChange={handleChange}
-                                    placeholder='    Food rating'
+                                    placeholder='Food rating'
                                     className={classes.textField}
                                 />
                             </div>
@@ -324,7 +325,7 @@ const FilterReview = props => {
                                     name="item_name"
                                     values={restaurant.item_name}
                                     onChange={handleChange}
-                                    placeholder='    Item name'
+                                    placeholder='Item name'
                                     className={classes.textField}
                                 />
                             </div>
@@ -337,7 +338,7 @@ const FilterReview = props => {
                                     name="price"
                                     values={restaurant.price}
                                     onChange={handleChange}
-                                    placeholder='    Price'
+                                    placeholder='Price'
                                     className={classes.textField}
                                 />
                             </div>
