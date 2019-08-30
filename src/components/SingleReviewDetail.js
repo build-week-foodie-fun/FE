@@ -47,8 +47,7 @@ function SingleReviewDetail(props) {
     };
 
     return (
-        <>
-
+        <div className="singleDetailBox">
         {typeof review !== 'undefined' && (
             <DetailContainer>
                 <div>
@@ -69,7 +68,7 @@ function SingleReviewDetail(props) {
             </DetailContainer>
         )}
 
-        </>
+        </div>
     );
 }
 
