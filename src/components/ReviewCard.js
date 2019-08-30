@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
 
 export default function ReviewCard(props) {
-  const { id, resName, itemName, itemImgUrl, foodRating, price } = props;
-  console.log(props);
-  return (
-    <Card key={id}>
+    const {id, resName, itemName, itemImgUrl, foodRating, price} = props;
+    return (
+      <Card key={id}>
       <Image src={itemImgUrl} wrapped ui={false} />
-
+      
       <Card.Content>
         <Card.Header>{resName}</Card.Header>
         <Card.Meta>{itemName}</Card.Meta>

@@ -15,7 +15,7 @@ const initialState = {
 };
 
 const reducers = (state = initialState, action) => {
-  console.log("Auth Action", action);
+  
   switch (action.type) {
     case LOGIN_START:
       return {

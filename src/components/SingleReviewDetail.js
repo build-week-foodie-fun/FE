@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { getReviews } from "../store/reviews/reviewsActions";
-import { deleteReview, grabReview } from "../store/reviews/reviewsActions";
+import React, {useEffect} from "react";
+import {connect} from "react-redux";
+import {getReviews} from "../store/reviews/reviewsActions";
+import {deleteReview, grabReview} from "../store/reviews/reviewsActions";
 import styled from "styled-components";
 
 const Img = styled.img`
