@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import {
     Switch,
     BrowserRouter as Router,
@@ -19,16 +18,11 @@ import SingleReviewDetail from "./components/SingleReviewDetail";
 //Material-ui
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Container from "@material-ui/core/Container";
+
 
 import "./App.css";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        // display: 'flex',
-        // justifyContent: 'center',
-    },
-}));
+
 
 const theme = createMuiTheme({
     typography: {
@@ -52,14 +46,11 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
-    const classes = useStyles();
-
     return (
         <>
             <MuiThemeProvider theme={theme}>
                 <Router>
                     <NavBar/>
-                    <Container maxWidth="lg" className={classes.root}>
                         <Switch>
                             {/* {public routes} */}
                             <Route path="/login" component={FormikLoginForm}/>
@@ -81,7 +72,6 @@ const App = () => {
                             {/* {default} */}
                             <Redirect from="/" to="/profile"/>
                         </Switch>
-                    </Container>
                 </Router>
             </MuiThemeProvider>
         </>

@@ -5,6 +5,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Avatar from "@material-ui/core/Avatar";
 import Logo from "../img/Foodie_Icon.png";
 import SearchIcon from '@material-ui/icons/Search'
+import Container from "@material-ui/core/Container";
 
 
 const useStyles = makeStyles({
@@ -281,7 +282,7 @@ const FilterReview = props => {
     };
 
     return (
-        <div>
+        <Container>
             <Grid layout={"row"} container className={classes.root}>
                 <Grid item xs={12} sm={3} alignItems={"center"} className={classes.formContainer}>
                     <form onSubmit={handleSubmit}>
@@ -376,7 +377,7 @@ const FilterReview = props => {
                     </Grid>
                 }
             </Grid>
-        </div>
+        </Container>
     );
 };
 
