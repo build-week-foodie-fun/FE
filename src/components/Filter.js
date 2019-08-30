@@ -1,30 +1,63 @@
-/* you may need to make some changes to this to flow well with the profile */
-
-//first line of actual component file delete all above
 import React, {useState, useEffect} from "react";
 import ReviewCard from "./ReviewCard";
 import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Avatar from "@material-ui/core/Avatar";
+import Logo from "../img/Foodie_Icon.png";
+import SearchIcon from '@material-ui/icons/Search'
+import Container from "@material-ui/core/Container";
 
 
 const useStyles = makeStyles({
     root: {
-        padding: 50,
+        borderTop: "1.5px solid #EDEDED",
     },
     formContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      textAlign: 'center',
-    },
-    form: {
-
+        display: 'flex',
+        flexDirection: 'column',
+        textAlign: 'center',
+        borderRight: "1.5px solid #EDEDED",
+        paddingTop: 50,
     },
     textField: {
         width: '100%',
     },
     items: {
         height: "100%",
-    }
+    },
+    reviews: {
+        paddingLeft: 35,
+        paddingTop: 50,
+    },
+    logo: {
+        width: 60,
+        height: 60,
+        margin: 'auto',
+    },
+    resetFiltersBtn: {
+        width: '50%',
+        marginTop: 10,
+    },
+    searchIcon: {
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 2,
+    },
+    search: {
+        position: 'relative',
+        backgroundColor: 'white',
+
+        '&:hover': {
+            color: 'red',
+            backgroundColor: 'white',
+        },
+        marginRight: 2,
+        width: '100%',
+    },
 });
 
 
@@ -249,78 +282,102 @@ const FilterReview = props => {
     };
 
     return (
-        <div>
+        <Container>
             <Grid layout={"row"} container className={classes.root}>
                 <Grid item xs={12} sm={3} alignItems={"center"} className={classes.formContainer}>
                     <form onSubmit={handleSubmit}>
+                        <Avatar alt="Logo" src={Logo} className={classes.logo}/>
                         <label>Filter Restaurant</label>
-                        <input
-                            type="text"
-                            name="restaurant_name"
-                            values={restaurant.restaurant_name}
-                            onChange={handleChange}
-                            placeholder='Restaurant name'
-                            className={classes.textField}
-                        />
-                        <input
-                            type="text"
-                            name="food_rating"
-                            values={restaurant.food_rating}
-                            onChange={handleChange}
-                            placeholder='Food rating'
-                            className={classes.textField}
-                        />
-                        <input
-                            type="text"
-                            name="item_name"
-                            values={restaurant.item_name}
-                            onChange={handleChange}
-                            placeholder='Item name'
-                            className={classes.textField}
-                        />
-                        <input
-                            type="number"
-                            name="price"
-                            values={restaurant.price}
-                            onChange={handleChange}
-                            placeholder='Price'
-                            className={classes.textField}
-                        />
+                        <div>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon/>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="restaurant_name"
+                                    values={restaurant.restaurant_name}
+                                    onChange={handleChange}
+                                    placeholder='    Restaurant name'
+                                    className={classes.textField}
+                                />
+                            </div>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon/>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="food_rating"
+                                    values={restaurant.food_rating}
+                                    onChange={handleChange}
+                                    placeholder='    Food rating'
+                                    className={classes.textField}
+                                />
+                            </div>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon/>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="item_name"
+                                    values={restaurant.item_name}
+                                    onChange={handleChange}
+                                    placeholder='    Item name'
+                                    className={classes.textField}
+                                />
+                            </div>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon/>
+                                </div>
+                                <input
+                                    type="number"
+                                    name="price"
+                                    values={restaurant.price}
+                                    onChange={handleChange}
+                                    placeholder='    Price'
+                                    className={classes.textField}
+                                />
+                            </div>
+                        </div>
                     </form>
-                    <button onClick={() => resetFilters()}>Reset Filters</button>
+                    <button onClick={() => resetFilters()} className={classes.resetFiltersBtn}>Reset Filters</button>
                 </Grid>
 
-              {userReviews.length === 0 ? 
-                <div> 
-                    <h3 style={{textAlign: "center", margin: "50px"}}>
-                        Add Your First Restuarant Review!
-                    </h3>
-                </div>
-                :
-                <Grid item xs={12} sm={9}>
-                    <Grid container spacing={2} justify={"center"} alignItems={"center"}>                                                                              
-                        {filteredItems.length > 0 && filteredItems.map(item => {
-                            return (
-                                <Grid xs={12} sm={4} md={3} item>
-                                    <div className={classes.items}>
-                                        <ReviewCard
-                                            key={item.id}
-                                            id={item.id}
-                                            resName={item["restaurant_name"]}
-                                            itemName={item["item_name"]}
-                                            itemImgUrl={item["photo_of_order"]}
-                                            foodRating={item["food_rating"]}
-                                            price={item.price}
-                                        />
-                                    </div>
-                                </Grid>
-                            );
-                        })}                     
+                {userReviews.length === 0 ?
+                    <div>
+                        <h3 style={{textAlign: "center", margin: "50px"}}>
+                            Add Your First Restuarant Review!
+                        </h3>
+                    </div>
+                    :
+                    <Grid item xs={12} sm={9}>
+                        <Grid container spacing={2} justify={"center"} alignItems={"center"}
+                              className={classes.reviews}>
+                            {filteredItems.length > 0 && filteredItems.map(item => {
+                                return (
+                                    <Grid xs={12} sm={4} md={3} item>
+                                        <div className={classes.items}>
+                                            <ReviewCard
+                                                key={item.id}
+                                                id={item.id}
+                                                resName={item["restaurant_name"]}
+                                                itemName={item["item_name"]}
+                                                itemImgUrl={item["photo_of_order"]}
+                                                foodRating={item["food_rating"]}
+                                                price={item.price}
+                                            />
+                                        </div>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
                     </Grid>
-                </Grid>
-              }
+                }
             </Grid>
-        </div>
+        </Container>
     );
 };
 
