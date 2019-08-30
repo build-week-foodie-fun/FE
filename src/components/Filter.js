@@ -59,6 +59,16 @@ const useStyles = makeStyles({
         marginRight: 2,
         width: '100%',
     },
+    emptyImg: {
+        width: 200,
+        height: 200,
+        margin: 'auto',
+    },
+    emptyContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingTop: 30,
+    }
 });
 
 
@@ -348,11 +358,12 @@ const FilterReview = props => {
                 </Grid>
 
                 {userReviews.length === 0 ?
-                    <div>
+                    <Grid item xs={12} sm={9} className={classes.emptyContainer}>
                         <h3 style={{textAlign: "center", margin: "50px"}}>
-                            Add Your First Restuarant Review!
+                            <Avatar src={require("../img/macaron-cookies.png")} className={classes.emptyImg}/>
+                            Add Your First Restaurant Review!
                         </h3>
-                    </div>
+                    </Grid>
                     :
                     <Grid item xs={12} sm={9}>
                         <Grid container spacing={2} justify={"center"} alignItems={"center"}
