@@ -16,7 +16,7 @@ To login to the App, follow the link and login with the correct username and pas
 <img width="600" height="400" src="https://raw.githubusercontent.com/build-week-foodie-fun/FE/development/src/img/Login.png" />
 
 To view the profile, login with user creentials and the first page rendered after the login is the profile. On the profile page, there will be the user info, reviews and filter.
-<img width="600" height="400" src="https://raw.githubusercontent.com/build-week-foodie-fun/FE/development/src/img/ReviewCard.png" />
+<img width="600" height="400" src="https://raw.githubusercontent.com/build-week-foodie-fun/FE/development/src/img/ProfilePage.png" />
 
 To use the filter, enter the restaurant name, food item name, price, rating, or date of visit on the corresponding field and the corresponding reviews will be available to view.
 
