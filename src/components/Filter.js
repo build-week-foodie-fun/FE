@@ -361,7 +361,7 @@ const FilterReview = props => {
                     <Grid item xs={12} sm={9} className={classes.emptyContainer}>
                         <h3 style={{textAlign: "center", margin: "50px"}}>
                             <Avatar src={require("../img/macaron-cookies.png")} className={classes.emptyImg}/>
-                            Add Your First Restuarant Review!
+                            Add Your First Restaurant Review!
                         </h3>
                     </Grid>
                     :
