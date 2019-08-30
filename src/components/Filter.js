@@ -59,6 +59,16 @@ const useStyles = makeStyles({
         marginRight: 2,
         width: '100%',
     },
+    emptyImg: {
+        width: 200,
+        height: 200,
+        margin: 'auto',
+    },
+    emptyContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingTop: 30,
+    }
 });
 
 
@@ -291,7 +301,7 @@ const FilterReview = props => {
                                 <input
                                     type="text"
                                     name="restaurant_name"
-                                    values={restaurant.restaurant_name}
+                                    value={restaurant.restaurant_name}
                                     onChange={handleChange}
                                     placeholder='Restaurant name'
                                     className={classes.textField}
@@ -304,7 +314,7 @@ const FilterReview = props => {
                                 <input
                                     type="text"
                                     name="food_rating"
-                                    values={restaurant.food_rating}
+                                    value={restaurant.food_rating}
                                     onChange={handleChange}
                                     placeholder='Food rating'
                                     className={classes.textField}
@@ -317,7 +327,7 @@ const FilterReview = props => {
                                 <input
                                     type="text"
                                     name="item_name"
-                                    values={restaurant.item_name}
+                                    value={restaurant.item_name}
                                     onChange={handleChange}
                                     placeholder='Item name'
                                     className={classes.textField}
@@ -330,7 +340,7 @@ const FilterReview = props => {
                                 <input
                                     type="number"
                                     name="price"
-                                    values={restaurant.price}
+                                    value={restaurant.price}
                                     onChange={handleChange}
                                     placeholder='Price'
                                     className={classes.textField}
@@ -338,15 +348,16 @@ const FilterReview = props => {
                             </div>
                         </div>
                     </form>
-                    <button onClick={() => resetFilters()} className={classes.resetFiltersBtn}>Reset Filters</button>
+                    <button onClick={()=>resetFilters()} className={classes.resetFiltersBtn}>Reset Filters</button>
                 </Grid>
 
                 {userReviews.length === 0 ?
-                    <div>
+                    <Grid item xs={12} sm={9} className={classes.emptyContainer}>
                         <h3 style={{textAlign: "center", margin: "50px"}}>
-                            Add Your First Restuarant Review!
+                            <Avatar src={require("../img/macaron-cookies.png")} className={classes.emptyImg}/>
+                            Add Your First Restaurant Review!
                         </h3>
-                    </div>
+                    </Grid>
                     :
                     <Grid item xs={12} sm={9}>
                         <Grid container spacing={2} justify={"center"} alignItems={"center"}
